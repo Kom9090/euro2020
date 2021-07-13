@@ -1,0 +1,33 @@
+._pc {
+    & .logo:hover {
+        & #logo__svg {
+            fill: $cog;
+        }
+    }
+    & .menu__list-link:hover {
+        color: $cog;
+        &::after {
+            opacity: 1;
+            visibility: visible;
+        }
+    }
+    & .header__item-user:hover {
+        &._icon-user {
+            color: $cog;
+        }
+    }
+    & .header__menu-icon {
+        cursor: pointer;
+        transition: background-color 0.3s;
+        &:hover {
+            & span,
+            & span::before,
+            & span::after {
+                background-color: $cog;
+            }
+        }
+    }
+}
+#logo__svg {
+    transition: fill 0.3s;
+}

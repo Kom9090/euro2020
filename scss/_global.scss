@@ -1,0 +1,82 @@
+//variables
+$cbl: #0084a4;
+$cbl2: #119bad;
+$cog: #f7a62a;
+$cdg: #5a6366;
+$clg: #b4c1c5;
+$cvp: #480049;
+$cvt: #7f3269;
+$csl: #c7d64f;
+
+//reset
+html {
+    box-sizing: border-box;
+}
+*,
+*::before,
+*::after {
+    box-sizing: inherit;
+}
+a {
+    text-decoration: none;
+    color: inherit;
+}
+ul,
+li {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    margin: 0;
+    font-size: inherit;
+}
+
+p,
+ul,
+ol {
+    padding: 0;
+    margin: 0;
+}
+
+body,
+button,
+input,
+optgroup,
+select,
+textarea {
+    font: inherit;
+    margin: 0;
+}
+
+//main
+html,
+body {
+    height: 100%;
+}
+
+body {
+    min-width: 280px;
+    overflow-x: hidden;
+    position: relative;
+    font-family: "pfbeausanspro-light", sans-serif;
+    color: #ffffff;
+}
+.content {
+    display: flex;
+    flex-direction: column;
+    min-height: 100%;
+}
+.main {
+    flex: 1;
+}
+.container {
+    max-width: 1440px;
+    margin: 0 auto;
+    padding: 0 10px;
+}
