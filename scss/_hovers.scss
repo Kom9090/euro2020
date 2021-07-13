@@ -27,6 +27,12 @@
             }
         }
     }
+    & .footer__list-link:hover {
+        color: $cog;
+    }
+    & .pravacy__link:hover {
+        color: #ffffff;
+    }
 }
 #logo__svg {
     transition: fill 0.3s;
