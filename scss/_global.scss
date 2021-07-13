@@ -67,6 +67,9 @@ body {
     font-family: "pfbeausanspro-light", sans-serif;
     color: #ffffff;
     overflow: auto;
+    &.lock {
+        overflow: hidden;
+    }
 }
 .content {
     display: flex;

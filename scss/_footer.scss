@@ -5,10 +5,7 @@
     }
     &__column {
         display: grid;
-        grid-template-columns: 25% 75%;
-        @media (max-width: 600px) {
-            grid-template-columns: 1fr 2fr;
-        }
+        grid-template-columns: 1fr 2fr;
     }
     &__logo {
         margin-right: 10px;

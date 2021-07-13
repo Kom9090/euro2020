@@ -56,14 +56,14 @@ if (popupCloseIcon.length > 0) {
     for (let index = 0; index < popupCloseIcon.length; index++) {
         const el = popupCloseIcon[index];
         el.addEventListener("click", function (e) {
-            popupClose(el.closest(".sign-menu"));
+            popupClose(el.closest(".popup"));
             e.preventDefault();
         });
     }
 }
 function popupOpen(curentPopup) {
     if (curentPopup && unlock) {
-        const popupActive = document.querySelector(".sign-menu.open");
+        const popupActive = document.querySelector(".popup.open");
         if (popupActive) {
             popupClose(popupActive, false);
         } else {
@@ -71,8 +71,8 @@ function popupOpen(curentPopup) {
         }
         curentPopup.classList.add("open");
         curentPopup.addEventListener("click", function (e) {
-            if (!e.target.closest(".sign-menu__window")) {
-                popupClose(e.target.closest(".sign-menu"))
+            if (!e.target.closest(".popup__window")) {
+                popupClose(e.target.closest(".popup"))
             }
         });
     }
@@ -113,3 +113,44 @@ function bodyUnLock() {
     }, timeout);
 }
 
+//input focus
+
+let input = document.querySelectorAll(".form__input");
+for (let k = 0; k < input.length; k++) {
+    input[k].addEventListener("focus", function (e) {
+        input[k].previousElementSibling.classList.add("_focus-input");
+    });
+    input[k].addEventListener("blur", function (e) {
+        if (input[k].value == "") {
+            input[k].previousElementSibling.classList.remove("_focus-input");
+        }
+    });
+}
+
+//show password
+
+let passF = document.querySelectorAll(".password-input");
+for (let l = 0; l < passF.length; l++) {
+    passF[l].addEventListener("focus", function (e) {
+        let showBtn = passF[l].parentElement.querySelector(".show-password-btn");
+        showBtn.classList.add("_focus-btn");
+    });
+    passF[l].addEventListener("blur", function (e) {
+        if (passF[l].value == "") {
+            let showBtn = passF[l].parentElement.querySelector(".show-password-btn");
+            showBtn.classList.remove("_focus-btn");
+        }
+    });
+}
+let view = document.querySelectorAll(".show-password-btn")
+for (let r = 0; r < view.length; r++) {
+    view[r].addEventListener("click", function (e) {
+        view[r].classList.toggle("_active-show");
+        let inputPd = view[r].parentElement.querySelector(".password-input");
+        if (inputPd.getAttribute("type") === "password") {
+            inputPd.setAttribute("type", "text");
+        } else {
+            inputPd.setAttribute("type", "password");
+        }
+    });
+}
