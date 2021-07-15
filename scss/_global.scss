@@ -1,6 +1,6 @@
 //variables
-$cbl: #0084a4;
-$cbl2: #119bad;
+$cbl: #028ca0;
+$cbl2: #017b8d;
 $cog: #f7a62a;
 $cdg: #5a6366;
 $clg: #b4c1c5;
@@ -75,6 +75,7 @@ body {
     display: flex;
     flex-direction: column;
     min-height: 100%;
+    padding-top: 74px;
 }
 .main {
     flex: 1;

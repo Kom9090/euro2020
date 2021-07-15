@@ -45,6 +45,54 @@
     & .social__btn:active {
         box-shadow: inset 0 0 4px rgba(0, 0, 0, 0.5);
     }
+    & .form__button:hover {
+        background-color: $cbl2;
+    }
+    & .form__button:active {
+        box-shadow: inset 0 0 4px rgba(0, 0, 0, 0.5);
+    }
+    & .change__btn:hover {
+        color: #ffffff;
+        background-color: $cbl;
+    }
+    & .change__btn:active {
+        box-shadow: inset 0 0 4px rgba(0, 0, 0, 0.5);
+    }
+    & .form__forget:hover {
+        color: $cbl;
+    }
+    & .game__link:hover::after {
+        visibility: visible;
+        opacity: 1;
+    }
+    & .sub-menu__inner .swiper-button-next:hover,
+    .sub-menu__inner .swiper-button-prev:hover {
+        background-color: $cbl;
+        border: 2px solid $cbl;
+        &::after {
+            color: #ffffff;
+        }
+    }
+    & .main-new__link:hover .main-new__text {
+        color: $cog;
+    }
+    & .column .swiper-button-next:hover,
+    .column .swiper-button-prev:hover {
+        background-color: #ffffff;
+        &::after {
+            color: $cbl;
+        }
+    }
+    & .column__btn:hover {
+        color: $cbl;
+        background-color: #ffffff;
+    }
+    & .column__link:hover {
+        color: $cog;
+        & .column__img {
+            transform: scale(1.1);
+        }
+    }
 }
 #logo__svg {
     transition: fill 0.3s;

@@ -39,7 +39,7 @@ document.documentElement.addEventListener("click", function (e) {
 const popupLinks = document.querySelectorAll(".popup-link");
 const lockPadding = document.querySelectorAll(".locck-padding");
 let unlock = true;
-const timeout = 800;
+const timeout = 300;
 if (popupLinks.length > 0) {
     for (let index = 0; index < popupLinks.length; index++) {
         const popupLink = popupLinks[index];
@@ -87,10 +87,13 @@ function popupClose(popupActive, doUnlock = true) {
 }
 function bodyLock() {
     const lockPaddingValue = window.innerWidth - document.querySelector(".content").offsetWidth + "px";
-    for (let index = 0; index < lockPadding.length; index++) {
-        const el = lockPadding[index];
-        el.getElementsByClassName.paddingRight = lockPaddingValue;
+    if (lockPadding.length > 0) {
+        for (let index = 0; index < lockPadding.length; index++) {
+            const el = lockPadding[index];
+            el.getElementsByClassName.paddingRight = lockPaddingValue;
+        }
     }
+
     body.style.paddingRight = lockPaddingValue;
     body.classList.add("lock");
     unlock = false;
@@ -112,6 +115,12 @@ function bodyUnLock() {
         unlock = true;
     }, timeout);
 }
+document.addEventListener("keydown", function (e) {
+    if (e.which === 27) {
+        const popupActive = document.querySelector(".popup.open");
+        popupClose(popupActive);
+    }
+});
 
 //input focus
 
@@ -154,3 +163,88 @@ for (let r = 0; r < view.length; r++) {
         }
     });
 }
+
+//content top
+
+let contentTop = document.querySelector(".content");
+let headerHeight = document.querySelector(".header__wrapper").offsetHeight + "px";
+if (headerHeight !== "74px") {
+    window.addEventListener("load", function (e) {
+        contentTop.style.paddingTop = String(headerHeight);
+    });
+}
+
+//swiper sub-menu
+
+new Swiper(".sub-menu__swiper", {
+    navigation: {
+        nextEl: ".sub-menu__inner .swiper-button-next",
+        prevEl: ".sub-menu__inner .swiper-button-prev"
+    },
+    initialSlide: 0,
+
+    breakpoints: {
+        280: {
+            slidesPerView: 1.5,
+            slidesPerGroup: 1,
+        },
+        470: {
+            slidesPerView: 2.5,
+            slidesPerGroup: 2,
+        },
+        600: {
+            slidesPerView: 2,
+            slidesPerGroup: 2,
+        },
+        670: {
+            slidesPerView: 3,
+            slidesPerGroup: 3,
+        },
+        880: {
+            slidesPerView: 4,
+            slidesPerGroup: 4,
+        },
+        1100: {
+            slidesPerView: 5,
+            slidesPerGroup: 5,
+        },
+        1400: {
+            slidesPerView: 6,
+            slidesPerGroup: 6,
+        }
+    },
+    spaceBetween: 40,
+    keyboard: {
+        enabled: true,
+        onlyInViewport: true,
+        pageUpDown: true,
+    },
+    mousewheel: {
+        sensitivity: 1,
+    }
+});
+
+// swiper news
+
+new Swiper(".column__swiper", {
+    navigation: {
+        nextEl: ".column .swiper-button-next",
+        prevEl: ".column .swiper-button-prev"
+    },
+    breakpoints: {
+        320: {
+            slidesPerView: 1,
+        },
+        760: {
+            slidesPerView: 2,
+        },
+        1000: {
+            slidesPerView: 1,
+        }
+    },
+    keyboard: {
+        enabled: true,
+        onlyInViewport: true,
+        pageUpDown: true,
+    },
+});
