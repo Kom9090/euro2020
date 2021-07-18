@@ -93,6 +93,22 @@
             transform: scale(1.1);
         }
     }
+    & .teams__link:hover .teams__flag {
+        filter: drop-shadow(1px 1px 10px rgba(0, 255, 128, 0.55));
+        transform: scale(1.1);
+    }
+    & .table__team:hover {
+        & .table__flag {
+            filter: drop-shadow(1px 1px 10px rgba(0, 255, 128, 0.55));
+        }
+        & .table__name {
+            color: $cvp;
+        }
+    }
+    & .cities__link:hover {
+        transform: scale(1.1);
+        background-color: #9c3e82;
+    }
 }
 #logo__svg {
     transition: fill 0.3s;

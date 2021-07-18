@@ -8,6 +8,12 @@ $cvp: #480049;
 $cvt: #7f3269;
 $csl: #c7d64f;
 
+//mixins
+//@mixin sizes($selector, $start, $increase, $maxw) {
+//    $selector: calc($start + $increase * (100vw / $maxw));
+//}
+//calc(200px + 1100 * ((100vw - 320px) / (1440 - 320)));
+
 //reset
 html {
     box-sizing: border-box;

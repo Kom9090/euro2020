@@ -1,0 +1,78 @@
+.teams {
+    &__inner {
+        padding: calc(15px + 15 * ((100vw - 280px) / (1420 - 280))) 0;
+        &._init ._icon-next::before {
+            opacity: 1;
+            visibility: visible;
+        }
+        &._init ._close-spr._icon-next::before {
+            transform: rotate(-90deg);
+        }
+    }
+    &__head {
+        color: $cbl2;
+        padding: 0;
+        border: none;
+        background-color: transparent;
+        display: flex;
+        align-items: center;
+        position: relative;
+        width: 100%;
+        &._icon-next::before {
+            font-weight: 900;
+            font-size: 24px;
+            position: absolute;
+            right: 0;
+            transform: rotate(90deg);
+            transition: transform 0.3s;
+            opacity: 0;
+            visibility: hidden;
+        }
+    }
+    &__title {
+        font-family: "Bridge Type", sans-serif;
+        font-size: calc(20px + 10 * (100vw / 1440));
+        font-weight: 400;
+        letter-spacing: 0.1em;
+    }
+    &__list {
+        display: grid;
+        grid-template: repeat(2, 1fr) / repeat(12, 1fr);
+        margin-bottom: 10px;
+        @media (max-width: 1360px) {
+            grid-template: repeat(3, 1fr) / repeat(8, 1fr);
+        }
+        @media (max-width: 1000px) {
+            grid-template: repeat(4, 1fr) / repeat(6, 1fr);
+        }
+        @media (max-width: 705px) {
+            grid-template: repeat(6, 1fr) / repeat(4, 1fr);
+        }
+        @media (max-width: 530px) {
+            grid-template: repeat(8, 1fr) / repeat(3, 1fr);
+        }
+        @media (max-width: 380px) {
+            grid-template: repeat(12, 1fr) / repeat(2, 1fr);
+        }
+    }
+    &__block {
+        margin-top: 20px;
+        padding: 0 5px;
+    }
+    &__link {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+    &__flag {
+        width: 45px;
+        height: 45px;
+        filter: drop-shadow(1px 1px 2px rgba(0, 0, 0, 0.6));
+        transition: 0.3s;
+    }
+    &__name {
+        color: $cbl2;
+        margin-top: 10px;
+        text-align: center;
+    }
+}
