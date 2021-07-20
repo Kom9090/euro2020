@@ -91,3 +91,25 @@ body {
     margin: 0 auto;
     padding: 0 10px;
 }
+.scroll-top {
+    position: fixed;
+    bottom: 3%;
+    right: 3%;
+    z-index: 100;
+    cursor: pointer;
+    background-color: $cbl;
+    border-radius: 50%;
+    border: none;
+    padding: 0;
+    height: 40px;
+    transition: background-color 0.3s;
+    &._icon-arrow:before {
+        font-size: 40px;
+        color: $cog;
+    }
+}
+._show-top {
+    transition: 0.3s;
+    opacity: 0;
+    visibility: hidden;
+}

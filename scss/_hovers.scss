@@ -109,6 +109,13 @@
         transform: scale(1.1);
         background-color: #9c3e82;
     }
+    & .videos .swiper-button-next:hover,
+    .videos .swiper-button-prev:hover {
+        background-color: $cbl;
+        &::after {
+            color: #ffffff;
+        }
+    }
 }
 #logo__svg {
     transition: fill 0.3s;

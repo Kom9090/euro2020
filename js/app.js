@@ -21,6 +21,9 @@ burgerChange.addEventListener("click", function (e) {
     let menuStart = document.querySelector(".menu__list");
     menuStart.classList.toggle("_active-nav");
 });
+burgerChange.addEventListener("click", function (e) {
+    body.classList.toggle("lock");
+});
 document.documentElement.addEventListener("click", function (e) {
     if (!e.target.closest(".header__menu-icon")) {
         let burg_menu = document.querySelector(".header__menu-icon");
@@ -31,6 +34,11 @@ document.documentElement.addEventListener("click", function (e) {
     if (!e.target.closest(".header__menu-icon")) {
         let burg_menu = document.querySelector(".menu__list");
         burg_menu.classList.remove("_active-nav");
+    }
+});
+document.documentElement.addEventListener("click", function (e) {
+    if (!e.target.closest(".header__menu-icon")) {
+        body.classList.remove("lock");
     }
 });
 
@@ -635,3 +643,69 @@ DynamicAdapt.prototype.arraySort = function (arr) {
 
 const da = new DynamicAdapt("min");
 da.init();
+
+// прокрутка к якорю
+
+
+
+
+const menuLinks = document.querySelectorAll(".anchors[data-goto]");
+if (menuLinks.length > 0) {
+    menuLinks.forEach(menuLink => {
+        menuLink.addEventListener("click", onMenuLinkClick);
+    });
+    function onMenuLinkClick(e) {
+        const menuLink = e.target;
+        if (menuLink.dataset.goto && document.querySelector(menuLink.dataset.goto)) {
+            const gotoBlock = document.querySelector(menuLink.dataset.goto);
+            const gotoBlockValue = gotoBlock.getBoundingClientRect().top + pageYOffset - (document.querySelector(".header__wrapper").offsetHeight);
+            window.scrollTo({
+                top: gotoBlockValue,
+                behavior: "smooth"
+            });
+            e.preventDefault();
+        }
+    }
+}
+//кнопка наверх
+const showAn = document.querySelector(".scroll-top");
+window.onscroll = () => {
+    if (window.scrollY > 700) {
+        showAn.classList.remove("_show-top");
+    }
+    else {
+        showAn.classList.add("_show-top");
+    }
+};
+
+// video
+
+new Swiper(".videos__swiper", {
+    navigation: {
+        nextEl: ".videos__inner .swiper-button-next",
+        prevEl: ".videos__inner .swiper-button-prev"
+    },
+    breakpoints: {
+        320: {
+            slidesPerView: 1,
+        },
+        600: {
+            slidesPerView: 2,
+        },
+        780: {
+            slidesPerView: 3,
+        },
+        1000: {
+            slidesPerView: 4,
+        },
+    },
+    spaceBetween: 30,
+    keyboard: {
+        enabled: true,
+        onlyInViewport: true,
+        pageUpDown: true,
+    },
+    mousewheel: {
+        sensitivity: 1,
+    }
+});

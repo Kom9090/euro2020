@@ -8,7 +8,7 @@
     <title>Euro 2020</title>
     <link rel="shortcut icon" href="/images/favicon.png" type="image/x-icon" />
     <link rel="apple-touch-icon" href="/images/apple-touch-icon.png" />
-    <link rel="stylesheet" href="/css/style.css" />
+    <link rel="stylesheet" href="/css/style.min.css" />
     <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
 </head>
 
@@ -27,20 +27,20 @@
                     <nav class="menu">
                         <ul class="menu__list">
                             <li class="menu__list-item">
-                                <a data-goto=".page-section-1" href="#" class="menu__list-link">Новости</a>
+                                <a href="#" data-goto=".news__section" class="menu__list-link anchors">Новости</a>
                             </li>
                             <li class="menu__list-item"><a href="#" class="menu__list-link">Матч-центр</a></li>
                             <li class="menu__list-item">
-                                <a data-goto=".page-section-2" href="#" class="menu__list-link">Команды</a>
+                                <a href="#" data-goto=".teams-section" class="menu__list-link anchors">Команды</a>
                             </li>
                             <li class="menu__list-item">
-                                <a data-goto=".page-section-3" href="#" class="menu__list-link">Группы</a>
+                                <a href="#" data-goto=".groups__section" class="menu__list-link anchors">Группы</a>
                             </li>
                             <li class="menu__list-item">
-                                <a data-goto=".page-section-4" href="#" class="menu__list-link">Города</a>
+                                <a href="#" data-goto=".cities__section" class="menu__list-link anchors">Города</a>
                             </li>
                             <li class="menu__list-item">
-                                <a data-goto=".page-section-5" href="#" class="menu__list-link"> Видео</a>
+                                <a href="#" data-goto=".videos__section" class="menu__list-link anchors"> Видео</a>
                             </li>
                         </ul>
                     </nav>
@@ -59,7 +59,7 @@
         <main class="main">
             <div class="main__sub-menu sub-menu">
                 <div class="container">
-                    <div class="sub-menu__inner">
+                    <div class="sub-menu__inner page-section-0">
                         <div class="sub-menu__swiper swiper-container">
                             <div class="sub-menu__wrapper swiper-wrapper">
                                 <div class="swiper-slide">
@@ -1048,12 +1048,13 @@
 
             </section>
             <section class="cities__section cities">
+                <div class="cities__mark glasgow"></div>
                 <div class="container">
                     <div class="cities__inner" data-spollers="705,max">
                         <div class="cities__wrapper">
                             <button data-da=".for-btn,705,0" tabindex="-1" type="button"
                                 class="cities__head _close-spr _icon-next" data-spoller>
-                                <h2 class="cities__title">Команды</h2>
+                                <h2 class="cities__title">Города</h2>
                             </button>
                             <div class="cities__spoller">
                                 <ul class="cities__list">
@@ -1148,6 +1149,99 @@
                                     </li>
 
                                 </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <section class="videos__section videos">
+                <div class="container">
+                    <div class="videos__inner">
+                        <div class="top-head videos__head">
+                            <h2 class="top-head__title videos__title">Видео</h2>
+                            <div class="videos__navigation">
+                                <div class="swiper-button-prev"></div>
+                                <div class="swiper-button-next"></div>
+                            </div>
+                        </div>
+                        <div class="videos__swiper swiper-container">
+                            <div class="swiper-wrapper">
+                                <div class="swiper-slide">
+                                    <a href="#video" class="videos__link popup-link">
+                                        <div class="videos__preview  _icon-play">
+                                            <img src="images/neth.webp" alt="preview" class="videos__img">
+                                        </div>
+                                        <div class="videos__text">
+                                            Обзор финального матча, а также экстратаймов и серии послематчевых пенальти
+                                        </div>
+                                    </a>
+                                </div>
+                                <div class="swiper-slide">
+                                    <a href="#video" class="videos__link popup-link">
+                                        <div class="videos__preview _icon-play">
+                                            <img src="images/wels.webp" alt="preview" class="videos__img">
+                                            <div class="video-btn"></div>
+                                        </div>
+                                        <div class="videos__text">
+                                            Обзор финального матча
+                                        </div>
+                                    </a>
+                                </div>
+                                <div class="swiper-slide">
+                                    <a href="#video" class="videos__link popup-link">
+                                        <div class="videos__preview _icon-play">
+                                            <img src="images/neth.webp" alt="preview" class="videos__img">
+                                            <div class="video-btn"></div>
+                                        </div>
+                                        <div class="videos__text">
+                                            Обзор финального матча
+                                        </div>
+                                    </a>
+                                </div>
+                                <div class="swiper-slide">
+                                    <a href="#video" class="videos__link popup-link">
+                                        <div class="videos__preview _icon-play">
+                                            <img src="images/neth.webp" alt="preview" class="videos__img">
+                                            <div class="video-btn"></div>
+                                        </div>
+                                        <div class="videos__text">
+                                            Обзор финального матча
+                                        </div>
+                                    </a>
+                                </div>
+                                <div class="swiper-slide">
+                                    <a href="#video" class="videos__link popup-link">
+                                        <div class="videos__preview _icon-play">
+                                            <img src="images/neth.webp" alt="preview" class="videos__img">
+                                            <div class="video-btn"></div>
+                                        </div>
+                                        <div class="videos__text">
+                                            Обзор финального матча
+                                        </div>
+                                    </a>
+                                </div>
+                                <div class="swiper-slide">
+                                    <a href="#video" class="videos__link popup-link">
+                                        <div class="videos__preview _icon-play">
+                                            <img src="images/neth.webp" alt="preview" class="videos__img">
+                                            <div class="video-btn"></div>
+                                        </div>
+                                        <div class="videos__text">
+                                            Обзор финального матча
+                                        </div>
+                                    </a>
+                                </div>
+                                <div class="swiper-slide">
+                                    <a href="#video" class="videos__link popup-link">
+                                        <div class="videos__preview _icon-play">
+                                            <img src="images/neth.webp" alt="preview" class="videos__img">
+                                            <div class="video-btn"></div>
+                                        </div>
+                                        <div class="videos__text">
+                                            Обзор финального матча
+                                        </div>
+                                    </a>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -1302,6 +1396,17 @@
             </div>
         </div>
     </div>
+    <div id="video" class="popup">
+        <div class="popup__content">
+            <div class="popup__window">
+                <a class="popup__close _close-popup" href="#"><img src="images/close.svg" alt="close"
+                        class="icon-close" /></a>
+            </div>
+        </div>
+    </div>
+    <button class="scroll-top _icon-arrow  anchors _show-top" data-goto=".page-section-0">
+    </button>
+    <script src="js/smooth.js"></script>
     <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
     <script src="js/app.js"></script>
 </body>

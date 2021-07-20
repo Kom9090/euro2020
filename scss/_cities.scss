@@ -1,4 +1,5 @@
 .cities {
+    position: relative;
     @media (min-width: 706px) {
         background: url("../images/euromap.jpg") center / cover no-repeat;
     }
@@ -22,7 +23,6 @@
             position: relative;
             padding: 0 0 10px 0;
             color: #ffffff;
-            letter-spacing: 0.15em;
             margin-bottom: 35px;
             &::after {
                 content: "";
@@ -74,6 +74,7 @@
         font-family: "Bridge Type", sans-serif;
         font-size: calc(20px + 10 * (100vw / 1440));
         font-weight: 400;
+        letter-spacing: 0.1em;
     }
     &__list {
         display: grid;
@@ -82,7 +83,7 @@
         align-items: center;
         justify-content: space-between;
         align-content: center;
-        padding: 25px 0;
+        padding: 30px 0;
         margin: 0 0 -35px 0;
         @media (max-width: 1000px) {
             grid-template: repeat(4, 1fr) / repeat(3, 1fr);
@@ -96,6 +97,7 @@
     }
     &__cart {
         margin-bottom: 35px;
+
         @media (min-width: 1000px) {
             &:nth-child(5) {
                 grid-row-start: 2;
@@ -128,6 +130,7 @@
         }
     }
     &__link {
+        position: relative;
         width: 250px;
         height: 160px;
         background-color: $cvt;
@@ -137,7 +140,6 @@
         justify-content: space-between;
         padding: 10px 0;
         font-size: 17px;
-        position: relative;
         transition: transform 0.5s, background-color 0.5s;
         &::after {
             content: "";
@@ -171,9 +173,21 @@
         object-fit: contain;
         object-position: bottom;
     }
+    &__mark {
+        position: absolute;
+        width: 20px;
+        height: 20px;
+        border-radius: 50%;
+        background-color: $cog;
+        opacity: 0;
+    }
 }
 .for-btn {
     @media (max-width: 705px) {
         display: none;
     }
+}
+.glasgow {
+    top: 36%;
+    left: 41%;
 }
