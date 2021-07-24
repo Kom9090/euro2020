@@ -76,6 +76,9 @@ body {
     &.lock {
         overflow: hidden;
     }
+    &._lock {
+        overflow: hidden;
+    }
 }
 .content {
     display: flex;

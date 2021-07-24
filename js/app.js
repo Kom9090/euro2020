@@ -22,7 +22,7 @@ burgerChange.addEventListener("click", function (e) {
     menuStart.classList.toggle("_active-nav");
 });
 burgerChange.addEventListener("click", function (e) {
-    body.classList.toggle("lock");
+    body.classList.toggle("_lock");
 });
 document.documentElement.addEventListener("click", function (e) {
     if (!e.target.closest(".header__menu-icon")) {
@@ -38,12 +38,12 @@ document.documentElement.addEventListener("click", function (e) {
 });
 document.documentElement.addEventListener("click", function (e) {
     if (!e.target.closest(".header__menu-icon")) {
-        body.classList.remove("lock");
+        body.classList.remove("_lock");
     }
 });
 
 //popap
-
+const frame = document.querySelector(".video__wrapper iframe");
 const popupLinks = document.querySelectorAll(".popup-link");
 const lockPadding = document.querySelectorAll(".locck-padding");
 let unlock = true;
@@ -90,6 +90,10 @@ function popupClose(popupActive, doUnlock = true) {
         popupActive.classList.remove("open");
         if (doUnlock) {
             bodyUnLock();
+            if (popupActive.classList.contains("popup__video")) {
+
+                frame.setAttribute("src", "");
+            }
         }
     }
 }
@@ -362,12 +366,12 @@ if (spollersArray.length > 0) {
         const spollerActiveTitle = spollersBlock.querySelector("[data-spoller]._close-spr");
         if (spollerActiveTitle) {
             spollerActiveTitle.classList.remove("_close-spr");
-            _slideUp(spollerActiveTitle.nextElementSibling, 500);
+            _slideUp(spollerActiveTitle.nextElementSibling, 300);
         }
     }
 }
 
-let _slideUp = (target, duration = 500) => {
+let _slideUp = (target, duration = 300) => {
     if (!target.classList.contains("_slide")) {
         target.classList.add("_slide");
         target.style.transitionProperty = "height, margin, padding";
@@ -394,7 +398,7 @@ let _slideUp = (target, duration = 500) => {
         }, duration);
     }
 }
-let _slideDown = (target, duration = 500) => {
+let _slideDown = (target, duration = 300) => {
     if (!target.classList.contains("_slide")) {
         target.classList.add("_slide");
         if (target.hidden) {
@@ -424,67 +428,13 @@ let _slideDown = (target, duration = 500) => {
         }, duration);
     }
 }
-let _slideToggle = (target, duration = 500) => {
+let _slideToggle = (target, duration = 300) => {
     if (target.hidden) {
         return _slideDown(target, duration);
     } else {
         return _slideUp(target, duration);
     }
 }
-
-
-/*
-// Существуют разные способы получить DOM-узел; здесь мы определяем саму форму и
-// поле ввода email и элемент span, в который поместим сообщение об ошибке
-const form = document.getElementsByTagName('form')[0];
-
-const email = document.getElementById('emailIn');
-const emailError = document.querySelector('#emailIn + span.helper-text');
-
-email.addEventListener('input', function (event) {
-    // Каждый раз, когда пользователь что-то вводит,
-    // мы проверяем, являются ли поля формы валидными
-
-    if (email.validity.valid) {
-        // Если на момент валидации какое-то сообщение об ошибке уже отображается,
-        // если поле валидно, удаляем сообщение
-        emailError.textContent = ''; // Сбросить содержимое сообщения
-        emailError.className = 'error'; // Сбросить визуальное состояние сообщения
-    } else {
-        // Если поле не валидно, показываем правильную ошибку
-        showError();
-    }
-});
-
-form.addEventListener('submit', function (event) {
-    // Если поле email валдно, позволяем форме отправляться
-
-    if (!email.validity.valid) {
-        // Если поле email не валидно, отображаем соответствующее сообщение об ошибке
-        showError();
-        // Затем предотвращаем стандартное событие отправки формы
-        event.preventDefault();
-    }
-});
-
-function showError() {
-    if (email.validity.valueMissing) {
-        // Если поле пустое,
-        // отображаем следующее сообщение об ошибке
-        emailError.textContent = 'You need to enter an e-mail address.';
-    } else if (email.validity.typeMismatch) {
-        // Если поле содержит не email-адрес,
-        // отображаем следующее сообщение об ошибке
-        emailError.textContent = 'Entered value needs to be an e-mail address.';
-    } else if (email.validity.tooShort) {
-        // Если содержимое слишком короткое,
-        // отображаем следующее сообщение об ошибке
-        emailError.textContent = `Email should be at least ${email.minLength} characters; you entered ${email.value.length}.`;
-    }
-
-    // Задаём соответствующую стилизацию
-    emailError.className = 'error active';
-}*/
 
 // динамический адаптив
 
@@ -709,3 +659,151 @@ new Swiper(".videos__swiper", {
         sensitivity: 1,
     }
 });
+
+//tooltip
+tippy("[data-tippy-content]", {
+    followCursor: 'horizontal',
+    maxWidth: 350,
+    theme: "light-border",
+    delay: [300, 0],
+});
+
+const gameLinkArr = document.querySelectorAll(".game__link");
+const firstTeam = document.querySelectorAll("[data-goalf]");
+const secondTeam = document.querySelectorAll("[data-goals]");
+for (let i = 0; i < gameLinkArr.length; i++) {
+    gameLinkArr[i].addEventListener("mouseover", function (e) {
+        let goallf = firstTeam[i].dataset.goalf;
+        let goalls = secondTeam[i].dataset.goals;
+        let lineClass = goallf == "" || goalls == "" ? "" : "tooltip-line";
+
+        tippy(gameLinkArr[i], {
+            content: `<div class="tooltip__team">
+                    <div class="tooltip__event">
+                        <span class="tooltip__name">${goallf}</span>
+                    </div>
+                </div>
+                <div class="${lineClass}"></div>
+                <div class="tooltip__team">
+                    <div class="tooltip__event">
+                        <span class="tooltip__name">${goalls}</span>
+                    </div>
+                </div>`,
+            placement: 'bottom',
+            maxWidth: 220,
+            delay: 200,
+            theme: "light-border",
+            allowHTML: true,
+        });
+    });
+}
+
+
+
+
+
+
+//валидация
+
+document.addEventListener("DOMContentLoaded", () => {
+
+    const form = document.forms[0];
+    const inputs = form.elements;
+
+    for (let i = 0; i < inputs.length; i++) {
+
+        let input = inputs[i];
+        let err = document.querySelector(`.${input.classList} + span.errors`);
+
+        //проверка после потери фокуса
+        input.addEventListener("blur", function () {
+            if (input.validity.valid || input.validity.valueMissing) {
+                err.textContent = "";
+                err.className = "errors";
+                input.classList.remove("_active");
+            } else {
+                showErrorBlur(input, err);
+            }
+        });
+
+        //проверка после произведенных изминений
+        input.addEventListener("input", function () {
+            if (input.validity.valid) {
+                input.classList.add("_valid");
+            } else {
+                err.textContent = "";
+                err.className = "errors";
+                input.classList.remove("_valid");
+            }
+        });
+
+        //проверка по отправке формы
+        form.addEventListener("submit", function (e) {
+            e.preventDefault();
+            if (!input.validity.valid) {
+                showErrorSubmit(input, err);
+            }
+            else {
+                submit();
+            }
+        });
+    }
+
+    //функция отображения ошибок после потери фокуса
+    function showErrorBlur(input, err) {
+        //проверка на длину заполненного поля
+        if (input.validity.tooShort) {
+            err.textContent = `Введите минимум ${input.minLength} символов.`;
+        }
+        //проверка на тип введенных даных
+        else if (input.validity.typeMismatch) {
+            err.textContent = 'Не соотвествие формату поля';
+        }
+        //проверка на соответствие паттерну, если он есть в поле
+        else if (input.validity.patternMismatch) {
+            err.textContent = 'Не соотвествие формату поля';
+        }
+        //добавляем красную рамку полю и статус ошибки
+        err.className = 'errors _null';
+        input.classList.add("_active");
+    }
+
+    //функция отображения ошибок при попытке отправить форму
+    function showErrorSubmit(input, err) {
+        //проверка на то, заполненно ли поле
+        if (input.validity.valueMissing) {
+            err.textContent = 'Поле не должно быть пустым';
+        }
+        //проверка на соответсвие данных паттерну
+        else if (input.validity.patternMismatch) {
+            err.textContent = 'Не соотвествие формату поля';
+        }
+        //проверка на длинну введенных символов
+        else if (input.validity.tooShort) {
+            err.textContent = `Введите минимум ${input.minLength} символов.`;
+        }
+        //проверка на тип введенных даных
+        else if (input.validity.typeMismatch) {
+            err.textContent = 'Не соотвествие формату поля';
+        }
+
+        //добавляем красную рамку полю и статус ошибки
+        err.className = 'errors _null';
+        input.classList.add("_active");
+    }
+});
+
+//video
+
+document.addEventListener("DOMContentLoaded", () => {
+    const videoLinkArray = document.querySelectorAll("[data-link]");
+    for (let i = 0; i < videoLinkArray.length; i++) {
+
+        let videoLink = videoLinkArray[i];
+        videoLink.addEventListener("click", () => {
+            videoContent = videoLink.dataset.link.trim();
+            frame.setAttribute("src", videoContent);
+        });
+    }
+});
+

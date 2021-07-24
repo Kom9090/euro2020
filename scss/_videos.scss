@@ -34,8 +34,12 @@
         -webkit-line-clamp: 2;
         -webkit-box-orient: vertical;
     }
+    &__link {
+        max-width: 320px;
+    }
     &__preview {
         width: 100%;
+
         height: 200px;
         overflow: hidden;
         position: relative;
@@ -105,4 +109,8 @@
     & .swiper-button-prev::after {
         padding-right: 6px;
     }
+}
+.videos__inner .swiper-slide {
+    display: flex;
+    justify-content: center;
 }

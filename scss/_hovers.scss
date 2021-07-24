@@ -101,9 +101,6 @@
         & .table__flag {
             filter: drop-shadow(1px 1px 10px rgba(0, 255, 128, 0.55));
         }
-        & .table__name {
-            color: $cvp;
-        }
     }
     & .cities__link:hover {
         transform: scale(1.1);
@@ -115,6 +112,9 @@
         &::after {
             color: #ffffff;
         }
+    }
+    & .scroll-top:hover {
+        background-color: #03bcd8;
     }
 }
 #logo__svg {

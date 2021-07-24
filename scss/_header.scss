@@ -87,8 +87,10 @@
     object-fit: cover;
 }
 .logo {
-    margin-right: 10px;
-    flex: 0 1 20%;
+    &__wrapper {
+        margin-right: 10px;
+        flex: 0 1 20%;
+    }
     &__svg {
         width: calc(100px + 50 * (100vw / 1440));
         position: relative;

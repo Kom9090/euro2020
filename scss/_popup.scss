@@ -34,9 +34,9 @@
         background-color: #ffffff;
         padding: 20px;
         position: relative;
-        transition: transform 0.5s linear;
+        transition: transform 0.3s linear;
         opacity: 0;
-        transform: translate(153%, -75%) scale(0.1, 0.1);
+        transform: translate(0, -20%) scale(0.1, 0.1);
         border-radius: 2px;
         font-family: Arial, Helvetica, sans-serif;
         font-size: 16px;
@@ -119,6 +119,10 @@
         outline: none;
         line-height: 24px;
         width: 100%;
+        transition: border-color 0.3s;
+        &:hover {
+            border-bottom: 2px solid $cdg;
+        }
         &:focus {
             border-bottom: 2px solid $cbl;
         }
@@ -204,7 +208,7 @@
     width: 24px;
     height: 20px;
     top: 5px;
-    right: 5px;
+    right: 28px;
     opacity: 0;
     visibility: hidden;
     z-index: 100;
@@ -218,6 +222,9 @@
         background-color: $cdg;
         transform: rotate(45deg);
         transition: 0.3s;
+    }
+    &.show-in {
+        right: 3px;
     }
 }
 ._focus-btn {
@@ -252,13 +259,85 @@
     transition: color 0.3s, background-color 0.3s;
 }
 .helper-text {
-    color: rgb(255, 79, 35);
+    position: absolute;
+    top: 0;
+    right: 0;
+    text-align: center;
+    line-height: 18px;
+    font-size: 14px;
+    width: 26px;
+    height: 26px;
+    border-radius: 50%;
+    color: #ffffff;
+    background-color: $clg;
+    border: 3px solid #ffffff;
+    cursor: help;
+}
+.tippy-box[data-theme~="white"] {
+    background-color: #e2f0f3;
+    color: $cdg;
     font-size: 12px;
+    font-weight: normal;
+}
+.tippy-box[data-theme~="white"] .tippy-arrow {
+    color: #e2f0f3;
 }
 .checkbox__link {
     color: $cbl;
 }
 
-input:valid {
-    border-bottom: 2px solid #08af24;
+.errors {
+    position: absolute;
+    top: 30px;
+    font-size: 14px;
+    left: 0;
+}
+._null {
+    color: rgb(201, 0, 0);
+}
+._active {
+    border-bottom: 2px solid rgb(201, 0, 0);
+}
+._active:focus {
+    border-bottom: 2px solid $cbl;
+}
+._valid {
+    border-bottom: 2px solid rgb(0, 128, 21);
+}
+._valid:focus {
+    border-bottom: 2px solid rgb(0, 128, 21);
+}
+.video__content {
+    padding: 0;
+}
+.video__window {
+    background-color: transparent;
+    max-width: 880px;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0;
+}
+.video__body {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(880px, 1fr));
+    @media (max-width: 890px) {
+        grid-template-columns: repeat(auto-fit, minmax(95vw, 1fr));
+    }
+}
+.video__wrapper {
+    position: relative;
+    padding: 0 0 56.25% 0;
+}
+.video__wrapper iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+.close-video {
+    top: -40px;
 }
