@@ -109,7 +109,7 @@
         }
     }
     &__box-input {
-        margin: 35px 0 0 0;
+        margin: 40px 0 30px 0;
         position: relative;
     }
     &__input {
@@ -128,11 +128,11 @@
         }
     }
     &__box-check {
-        margin: 15px 0 0;
         display: flex;
         justify-content: space-between;
         align-items: center;
         font-size: 13px;
+        padding-top: 5px;
     }
     &__forget {
         margin: 10px 0 10px 10px;
@@ -243,6 +243,7 @@
 }
 .box-chek__input {
     display: flex;
+    position: relative;
 }
 .change__btn {
     display: flex;
@@ -273,6 +274,21 @@
     border: 3px solid #ffffff;
     cursor: help;
 }
+.helper-check {
+    position: absolute;
+    top: 0;
+    right: 0;
+    text-align: center;
+    line-height: 18px;
+    font-size: 14px;
+    width: 26px;
+    height: 26px;
+    border-radius: 50%;
+    color: #ffffff;
+    border: 3px solid #ffffff;
+    cursor: help;
+    background-color: rgb(0, 128, 21);
+}
 .tippy-box[data-theme~="white"] {
     background-color: #e2f0f3;
     color: $cdg;
@@ -284,13 +300,20 @@
 }
 .checkbox__link {
     color: $cbl;
+    display: inline-block;
+    margin-bottom: 25px;
+    font-weight: 600;
 }
 
 .errors {
     position: absolute;
     top: 30px;
-    font-size: 14px;
+    font-size: 12px;
     left: 0;
+}
+.box-chek__input .errors {
+    top: 60px;
+    left: 18px;
 }
 ._null {
     color: rgb(201, 0, 0);

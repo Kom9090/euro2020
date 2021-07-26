@@ -357,7 +357,7 @@ if (spollersArray.length > 0) {
                     hideSpollersBody(spollersBlock);
                 }
                 spollerTitle.classList.toggle("_close-spr");
-                _slideToggle(spollerTitle.nextElementSibling, 500);
+                _slideToggle(spollerTitle.nextElementSibling, 300);
             }
             e.preventDefault();
         }
@@ -661,14 +661,22 @@ new Swiper(".videos__swiper", {
 });
 
 //tooltip
-tippy("[data-tippy-content]", {
+tippy(document.querySelectorAll(".tippy"), {
     followCursor: 'horizontal',
     maxWidth: 350,
     theme: "light-border",
     delay: [300, 0],
+    touch: false,
+});
+tippy(document.querySelectorAll(".helper-text"), {
+    followCursor: 'horizontal',
+    maxWidth: 350,
+    theme: "light-border",
+    delay: [300, 0],
+    touch: true,
 });
 
-const gameLinkArr = document.querySelectorAll(".game__link");
+/*const gameLinkArr = document.querySelectorAll(".game__link");
 const firstTeam = document.querySelectorAll("[data-goalf]");
 const secondTeam = document.querySelectorAll("[data-goals]");
 for (let i = 0; i < gameLinkArr.length; i++) {
@@ -677,28 +685,17 @@ for (let i = 0; i < gameLinkArr.length; i++) {
         let goalls = secondTeam[i].dataset.goals;
         let lineClass = goallf == "" || goalls == "" ? "" : "tooltip-line";
 
-        tippy(gameLinkArr[i], {
-            content: `<div class="tooltip__team">
-                    <div class="tooltip__event">
-                        <span class="tooltip__name">${goallf}</span>
-                    </div>
-                </div>
-                <div class="${lineClass}"></div>
-                <div class="tooltip__team">
-                    <div class="tooltip__event">
-                        <span class="tooltip__name">${goalls}</span>
-                    </div>
-                </div>`,
-            placement: 'bottom',
-            maxWidth: 220,
-            delay: 200,
-            theme: "light-border",
-            allowHTML: true,
-        });
+        
     });
-}
+}*/
 
-
+tippy(document.querySelectorAll(".game__link"), {
+    placement: 'bottom',
+    maxWidth: 220,
+    delay: 200,
+    theme: "light-border",
+    allowHTML: true,
+});
 
 
 
@@ -706,91 +703,193 @@ for (let i = 0; i < gameLinkArr.length; i++) {
 //валидация
 
 document.addEventListener("DOMContentLoaded", () => {
+    "use strict";
+    const forms = document.forms;
 
-    const form = document.forms[0];
-    const inputs = form.elements;
+    for (let n = 0; n < forms.length; n++) {
 
-    for (let i = 0; i < inputs.length; i++) {
+        const form = forms[n];
+        const inputs = form.querySelectorAll("input");
 
-        let input = inputs[i];
-        let err = document.querySelector(`.${input.classList} + span.errors`);
+        for (let i = 0; i < inputs.length; i++) {
 
-        //проверка после потери фокуса
-        input.addEventListener("blur", function () {
-            if (input.validity.valid || input.validity.valueMissing) {
-                err.textContent = "";
-                err.className = "errors";
-                input.classList.remove("_active");
-            } else {
-                showErrorBlur(input, err);
+            let input = inputs[i];
+            let err = document.querySelector(`#${input.id} + span.errors`);
+            const password = form.querySelector(".password");
+            const confirmPassword = form.querySelector(".passwordConfirm");
+            let helperChange = document.querySelector(`#${input.id} ~ span.helper-text`);
+
+            if (confirmPassword) {
+
+                input.addEventListener("blur", function () {
+                    if (input == confirmPassword) {
+                        if (input.validity.valueMissing) {
+                            hideError(input, err);
+                        }
+                        else if (confirmPassword.value !== password.value) {
+                            err.textContent = `Пароли не совпадают.`;
+                            showInvalid(input, err);
+                        }
+                        else if (input.validity.valid || input.validity.valueMissing) {
+                            hideError(input, err);
+                        } else {
+                            showErrorBlur(input, err);
+                        }
+                    }
+                    else if (input.validity.valid || input.validity.valueMissing) {
+                        hideError(input, err);
+                    } else {
+                        showErrorBlur(input, err);
+                    }
+                });
+                input.addEventListener("input", function () {
+                    if (input == confirmPassword) {
+                        if (confirmPassword.value !== password.value) {
+                            err.textContent = `Пароли не совпадают.`;
+                            showInvalid(input, err);
+                            input.classList.remove("_valid");
+                            helperChange.textName = "helper-check";
+                            helperChange.textContent = "?";
+                        }
+                        else if (input.validity.valid) {
+                            input.classList.add("_valid");
+                            helperChange.className = "helper-check";
+                            helperChange.textContent = "+";
+                            err.textContent = "";
+                            err.className = "errors";
+                        } else {
+                            hideValid(input, err, helperChange);
+                        }
+                    }
+                    else if (input.validity.valid) {
+                        input.classList.add("_valid");
+                        helperChange.className = "helper-check";
+                        helperChange.textContent = "+";
+                        err.textContent = "";
+                    } else {
+                        hideValid(input, err, helperChange);
+                    }
+                });
+
+                form.addEventListener("submit", function (e) {
+                    if (input == confirmPassword) {
+                        if (confirmPassword.value !== password.value) {
+                            err.textContent = `Пароли не совпадают.`;
+                            showInvalid(input, err);
+                            input.classList.remove("_valid");
+                            helperChange.textName = "helper-check";
+                            helperChange.textContent = "?";
+                            e.preventDefault();
+                        }
+                        else if (!input.validity.valid) {
+                            showErrorSubmit(input, err);
+                            e.preventDefault();
+                        }
+                    }
+                    else if (!input.validity.valid || confirmPassword.value !== password.value) {
+                        showErrorSubmit(input, err);
+                        e.preventDefault();
+                    }
+                });
+
             }
-        });
 
-        //проверка после произведенных изминений
-        input.addEventListener("input", function () {
-            if (input.validity.valid) {
-                input.classList.add("_valid");
-            } else {
-                err.textContent = "";
-                err.className = "errors";
-                input.classList.remove("_valid");
-            }
-        });
-
-        //проверка по отправке формы
-        form.addEventListener("submit", function (e) {
-            e.preventDefault();
-            if (!input.validity.valid) {
-                showErrorSubmit(input, err);
-            }
             else {
-                submit();
+
+                input.addEventListener("blur", function () {
+                    if (input.validity.valid || input.validity.valueMissing) {
+                        hideError(input, err)
+                    } else {
+                        showErrorBlur(input, err);
+                    }
+                });
+
+
+                input.addEventListener("input", function () {
+                    if (input.validity.valid) {
+                        input.classList.add("_valid");
+                        err.textContent = "";
+                    } else {
+                        hideValid(input, err, helperChange);
+                    }
+                });
+
+
+                form.addEventListener("submit", function (e) {
+                    if (!input.validity.valid) {
+                        showErrorSubmit(input, err);
+                        e.preventDefault();
+                    }
+                });
             }
-        });
+
+        }
     }
 
-    //функция отображения ошибок после потери фокуса
     function showErrorBlur(input, err) {
-        //проверка на длину заполненного поля
+
         if (input.validity.tooShort) {
             err.textContent = `Введите минимум ${input.minLength} символов.`;
         }
-        //проверка на тип введенных даных
+
         else if (input.validity.typeMismatch) {
             err.textContent = 'Не соотвествие формату поля';
         }
-        //проверка на соответствие паттерну, если он есть в поле
+
         else if (input.validity.patternMismatch) {
-            err.textContent = 'Не соотвествие формату поля';
+            err.textContent = 'Не соотвествие формату поля, смотрите требования в подсказке';
         }
-        //добавляем красную рамку полю и статус ошибки
-        err.className = 'errors _null';
-        input.classList.add("_active");
+
+        showInvalid(input, err);
     }
 
-    //функция отображения ошибок при попытке отправить форму
+
     function showErrorSubmit(input, err) {
-        //проверка на то, заполненно ли поле
+
         if (input.validity.valueMissing) {
-            err.textContent = 'Поле не должно быть пустым';
+            if (input == document.querySelector(".checkbox")) {
+                err.textContent = 'Подтвердите согласие на обработку данных';
+            }
+            else {
+                err.textContent = 'Поле не должно быть пустым';
+            }
         }
-        //проверка на соответсвие данных паттерну
+
         else if (input.validity.patternMismatch) {
-            err.textContent = 'Не соотвествие формату поля';
+            err.textContent = 'Не соотвествие формату поля, смотрите требования в подсказке';
         }
-        //проверка на длинну введенных символов
+
         else if (input.validity.tooShort) {
             err.textContent = `Введите минимум ${input.minLength} символов.`;
         }
-        //проверка на тип введенных даных
+
         else if (input.validity.typeMismatch) {
             err.textContent = 'Не соотвествие формату поля';
         }
 
-        //добавляем красную рамку полю и статус ошибки
+
+        showInvalid(input, err);
+    }
+
+    function hideError(input, err) {
+        err.textContent = "";
+        err.className = "errors";
+        input.classList.remove("_active");
+    }
+
+    function hideValid(input, err, helperChange) {
+        err.textContent = "";
+        err.className = "errors";
+        input.classList.remove("_valid");
+        helperChange.className = "helper-text";
+        helperChange.textContent = "?";
+    }
+
+    function showInvalid(input, err) {
         err.className = 'errors _null';
         input.classList.add("_active");
     }
+
 });
 
 //video

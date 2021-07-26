@@ -894,7 +894,7 @@ body._lock {
 }
 
 .form__box-input {
-  margin: 35px 0 0 0;
+  margin: 40px 0 30px 0;
   position: relative;
 }
 
@@ -918,7 +918,6 @@ body._lock {
 }
 
 .form__box-check {
-  margin: 15px 0 0;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -929,6 +928,7 @@ body._lock {
       -ms-flex-align: center;
           align-items: center;
   font-size: 13px;
+  padding-top: 5px;
 }
 
 .form__forget {
@@ -1074,6 +1074,7 @@ body._lock {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+  position: relative;
 }
 
 .change__btn {
@@ -1114,6 +1115,22 @@ body._lock {
   cursor: help;
 }
 
+.helper-check {
+  position: absolute;
+  top: 0;
+  right: 0;
+  text-align: center;
+  line-height: 18px;
+  font-size: 14px;
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  color: #ffffff;
+  border: 3px solid #ffffff;
+  cursor: help;
+  background-color: #008015;
+}
+
 .tippy-box[data-theme~="white"] {
   background-color: #e2f0f3;
   color: #5a6366;
@@ -1127,13 +1144,21 @@ body._lock {
 
 .checkbox__link {
   color: #028ca0;
+  display: inline-block;
+  margin-bottom: 25px;
+  font-weight: 600;
 }
 
 .errors {
   position: absolute;
   top: 30px;
-  font-size: 14px;
+  font-size: 12px;
   left: 0;
+}
+
+.box-chek__input .errors {
+  top: 60px;
+  left: 18px;
 }
 
 ._null {
@@ -1336,16 +1361,6 @@ body._lock {
 
 .game__score {
   margin-left: auto;
-}
-
-.tooltip__event {
-  min-width: 150px;
-}
-
-.tooltip-line {
-  height: 1px;
-  width: 100%;
-  background-color: #b4c1c5;
 }
 
 .news {
@@ -1980,20 +1995,10 @@ body._lock {
     background-color: #7f3269;
     display: inline-block;
     position: relative;
-    padding: 0 0 10px 0;
     color: #ffffff;
-    margin-bottom: 35px;
-  }
-  .cities__head::after {
-    content: "";
-    position: absolute;
-    left: 0;
-    bottom: 0;
-    width: 100%;
-    height: 10px;
-    background-color: #c7d64f;
-    -webkit-transition: 0.3s;
-    transition: 0.3s;
+    margin-bottom: 44px;
+    -webkit-box-shadow: 0px 10px 0px #c7d64f;
+            box-shadow: 0px 10px 0px #c7d64f;
   }
 }
 
@@ -2091,7 +2096,7 @@ body._lock {
 }
 
 .cities__cart {
-  margin-bottom: 35px;
+  margin-bottom: 44px;
 }
 
 @media (min-width: 1000px) {
@@ -2157,22 +2162,14 @@ body._lock {
   -webkit-box-pack: justify;
       -ms-flex-pack: justify;
           justify-content: space-between;
-  padding: 10px 0;
+  padding: 10px 0 0 0;
   font-size: 17px;
-  -webkit-transition: background-color 0.5s, -webkit-transform 0.5s;
-  transition: background-color 0.5s, -webkit-transform 0.5s;
-  transition: transform 0.5s, background-color 0.5s;
-  transition: transform 0.5s, background-color 0.5s, -webkit-transform 0.5s;
-}
-
-.cities__link::after {
-  content: "";
-  position: absolute;
-  left: 0;
-  bottom: 0;
-  width: 100%;
-  height: 10px;
-  background-color: #c7d64f;
+  -webkit-transition: background-color 0.3s, -webkit-transform 0.3s;
+  transition: background-color 0.3s, -webkit-transform 0.3s;
+  transition: transform 0.3s, background-color 0.3s;
+  transition: transform 0.3s, background-color 0.3s, -webkit-transform 0.3s;
+  -webkit-box-shadow: 0px 10px 0px #c7d64f;
+          box-shadow: 0px 10px 0px #c7d64f;
 }
 
 @media (max-width: 1440px) {
