@@ -236,6 +236,54 @@ new Swiper(".sub-menu__swiper", {
     }
 });
 
+new Swiper(".stages__swiper", {
+    navigation: {
+        nextEl: ".stages__inner .swiper-button-next",
+        prevEl: ".stages__inner .swiper-button-prev"
+    },
+    initialSlide: 0,
+    centeredSlides: true,
+    initialSlide: 6,
+    breakpoints: {
+        280: {
+            slidesPerView: 1,
+            slidesPerGroup: 1,
+        },
+        380: {
+            slidesPerView: 2,
+            slidesPerGroup: 1,
+        },
+        600: {
+            slidesPerView: 2,
+            slidesPerGroup: 1,
+        },
+        670: {
+            slidesPerView: 3,
+            slidesPerGroup: 1,
+        },
+        880: {
+            slidesPerView: 4,
+            slidesPerGroup: 1,
+        },
+        1100: {
+            slidesPerView: 5,
+            slidesPerGroup: 1,
+        },
+        1400: {
+            slidesPerView: 6,
+            slidesPerGroup: 1,
+        }
+    },
+    spaceBetween: 0,
+    keyboard: {
+        enabled: true,
+        onlyInViewport: true,
+        pageUpDown: true,
+    },
+    mousewheel: {
+        sensitivity: 1,
+    }
+});
 // swiper news
 
 new Swiper(".column__swiper", {
@@ -763,15 +811,18 @@ document.addEventListener("DOMContentLoaded", () => {
                     }
                     else if (input.validity.valid) {
                         input.classList.add("_valid");
-                        helperChange.className = "helper-check";
-                        helperChange.textContent = "+";
                         err.textContent = "";
+                        if (input !== document.querySelector(".checkbox")) {
+                            helperChange.className = "helper-check";
+                            helperChange.textContent = "+";
+                        }
                     } else {
                         hideValid(input, err, helperChange);
                     }
                 });
 
-                form.addEventListener("submit", function (e) {
+                form.addEventListener("submit", formSend);
+                async function formSend(e) {
                     if (input == confirmPassword) {
                         if (confirmPassword.value !== password.value) {
                             err.textContent = `Пароли не совпадают.`;
@@ -790,11 +841,29 @@ document.addEventListener("DOMContentLoaded", () => {
                         showErrorSubmit(input, err);
                         e.preventDefault();
                     }
-                });
+                    else if (inputs[0].validity.valid && inputs[1].validity.valid && inputs[2].validity.valid && inputs[3].validity.valid && inputs[4].validity.valid && confirmPassword.value == password.value) {
+                        e.preventDefault();
+                        form.classList.add("_sending");
+                        let response = await fetch("sendmail.php", {
+                            method: "POST"
+                        });
+                        if (response.ok) {
+                            let result = await response.json();
+                            alert(result.message);
+                            form.reset();
+                            form.classList.remove("_sending");
+                        }
+                        else {
+                            alert("Ошибка");
+                            form.classList.remove("_sending");
+                        }
+                    }
+                }
+
 
             }
 
-            else {
+            else if (input !== document.querySelector(".check-m")) {
 
                 input.addEventListener("blur", function () {
                     if (input.validity.valid || input.validity.valueMissing) {
@@ -810,86 +879,112 @@ document.addEventListener("DOMContentLoaded", () => {
                         input.classList.add("_valid");
                         err.textContent = "";
                     } else {
-                        hideValid(input, err, helperChange);
+                        err.textContent = "";
+                        err.className = "errors";
+                        input.classList.remove("_valid");
                     }
                 });
 
 
-                form.addEventListener("submit", function (e) {
+                form.addEventListener("submit", formSend);
+                async function formSend(e) {
                     if (!input.validity.valid) {
                         showErrorSubmit(input, err);
                         e.preventDefault();
                     }
-                });
-            }
+                    else if (inputs[0].validity.valid && inputs[1].validity.valid) {
+                        e.preventDefault();
+                        form.classList.add("_sending");
+                        let response = await fetch("serv/server.php", {
+                            method: "POST",
+                            body: data
+                        });
+                        if (response.ok) {
+                            let result = await response.text();
 
-        }
-    }
+                            let success = document.createElement("div.succses");
+                            document.querySelector(".popap-in").classList.add("_result");
+                            success.innerHTML = `<p>Авторизация успешна. ${result.message}</p> <button>Ок</button>`;
+                            form.replaceWith(success);
 
-    function showErrorBlur(input, err) {
+                        }
+                        else {
+                            alert("Ошибка");
+                            form.classList.remove("_sending");
+                        }
 
-        if (input.validity.tooShort) {
-            err.textContent = `Введите минимум ${input.minLength} символов.`;
-        }
-
-        else if (input.validity.typeMismatch) {
-            err.textContent = 'Не соотвествие формату поля';
-        }
-
-        else if (input.validity.patternMismatch) {
-            err.textContent = 'Не соотвествие формату поля, смотрите требования в подсказке';
-        }
-
-        showInvalid(input, err);
-    }
-
-
-    function showErrorSubmit(input, err) {
-
-        if (input.validity.valueMissing) {
-            if (input == document.querySelector(".checkbox")) {
-                err.textContent = 'Подтвердите согласие на обработку данных';
-            }
-            else {
-                err.textContent = 'Поле не должно быть пустым';
+                    }
+                }
             }
         }
 
-        else if (input.validity.patternMismatch) {
-            err.textContent = 'Не соотвествие формату поля, смотрите требования в подсказке';
+        function showErrorBlur(input, err) {
+
+            if (input.validity.tooShort) {
+                err.textContent = `Введите минимум ${input.minLength} символов.`;
+            }
+
+            else if (input.validity.typeMismatch) {
+                err.textContent = 'Не соотвествие формату поля';
+            }
+
+            else if (input.validity.patternMismatch) {
+                err.textContent = 'Не соотвествие формату поля, смотрите требования в подсказке';
+            }
+
+            showInvalid(input, err);
         }
 
-        else if (input.validity.tooShort) {
-            err.textContent = `Введите минимум ${input.minLength} символов.`;
+
+        function showErrorSubmit(input, err) {
+
+            if (input.validity.valueMissing) {
+                if (input == document.querySelector(".checkbox")) {
+                    err.textContent = 'Подтвердите согласие на обработку данных';
+                }
+                else {
+                    err.textContent = 'Поле не должно быть пустым';
+                }
+            }
+
+            else if (input.validity.patternMismatch) {
+                err.textContent = 'Не соотвествие формату поля, смотрите требования в подсказке';
+            }
+
+            else if (input.validity.tooShort) {
+                err.textContent = `Введите минимум ${input.minLength} символов.`;
+            }
+
+            else if (input.validity.typeMismatch) {
+                err.textContent = 'Не соотвествие формату поля';
+            }
+
+
+            showInvalid(input, err);
         }
 
-        else if (input.validity.typeMismatch) {
-            err.textContent = 'Не соотвествие формату поля';
+        function hideError(input, err) {
+            err.textContent = "";
+            err.className = "errors";
+            input.classList.remove("_active");
         }
 
+        function hideValid(input, err, helperChange) {
+            err.textContent = "";
+            err.className = "errors";
+            input.classList.remove("_valid");
+            if (input !== document.querySelector(".checkbox")) {
+                helperChange.className = "helper-text";
+                helperChange.textContent = "?";
+            }
+        }
 
-        showInvalid(input, err);
+        function showInvalid(input, err) {
+            err.className = 'errors _null';
+            input.classList.add("_active");
+        }
+
     }
-
-    function hideError(input, err) {
-        err.textContent = "";
-        err.className = "errors";
-        input.classList.remove("_active");
-    }
-
-    function hideValid(input, err, helperChange) {
-        err.textContent = "";
-        err.className = "errors";
-        input.classList.remove("_valid");
-        helperChange.className = "helper-text";
-        helperChange.textContent = "?";
-    }
-
-    function showInvalid(input, err) {
-        err.className = 'errors _null';
-        input.classList.add("_active");
-    }
-
 });
 
 //video
@@ -905,4 +1000,119 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     }
 });
+
+//tabs 
+
+const stageBtnArr = document.querySelectorAll(".stage__btn");
+for (let index = 0; index < stageBtnArr.length; index++) {
+    let stages = stageBtnArr[index];
+    stages.addEventListener("click", function () {
+        for (n = 0; n < stageBtnArr.length; n++) {
+            stageBtnArr[n].parentElement.classList.remove("_active-tab");
+        }
+        stages.parentElement.classList.add("_active-tab");
+        hideMatches();
+        getMatchs(index);
+    });
+}
+function hideMatches() {
+    let matchesArr = document.querySelectorAll(".matches__inner");
+    matchesArr.forEach(item => {
+        item.style.display = "none";
+
+    });
+}
+async function getMatchs(index) {
+    const main = document.querySelector(".main-games");
+
+    main.classList.add("_loading");
+    let data = await fetch("json/matches.json", {
+        method: "GET",
+    });
+    if (data.ok) {
+        let result = await data.json();
+        main.classList.remove("_loading");
+        if (document.querySelector(`.tab${index}`)) {
+            document.querySelector(`.tab${index}`).style.display = "block";
+        }
+        else {
+            const tabArr = result.st[index];
+            const stId = tabArr.id;
+            const stContent = tabArr.linkm;
+            let cartR = await fetch(`${stContent}`, {
+                method: "GET",
+            });
+            let cart = await cartR.text();
+            const div = document.createElement("div");
+            div.classList.add("matches__inner");
+            div.classList.add(`tab${stId}`);
+            div.innerHTML = cart;
+            document.querySelector(".matches-container").append(div);
+
+        }
+
+    } else {
+        main.classList.remove("_loading");
+        alert(`Данные не были получены, ошибка ${data.status} ${data.statusText}`);
+    }
+}
+/*
+function showMatch(result) {
+    let testr = result.news;
+    console.log(testr);
+
+
+
+
+}*/
+
+
+/*
+function loadMatches(resp) {
+    const matchesBlock = document.querySelector(".matches__block");
+    resp.news.forEach(item => {
+        const newsId = item.id;
+        const newsUrl = item.url;
+        const newsImg = item.img;
+        const newsDate = item.date;
+        const newsName = item.name;
+
+        let cart = `
+                        <h3 class="matches__title">
+                                ${newsDate}
+                            </h3>
+                            <div class="matches__cart">
+                                <a href="${newsUrl}" class="matches__link">
+                                    <div class="matches__info">
+                                        <p class="info-text">${newsName}</p>
+                                        <span class="info-location">Вембли, Лондон ${newsId}</span>
+                                    </div>
+                                    <div class="match">
+                                        <div class="match__extra">Победа Италии по пенальти (3 - 2)</div>
+                                        <div class="match__main">
+                                            <div class="match__team">
+                                                <span class="match__name">Италия</span>
+                                                <img src="${newsImg}" alt="flag-italy" class="match__flag">
+                                            </div>
+                                            <div class="match__score">1 - 1</div>
+                                            <div class="match__team">
+                                                <img src="images/121-england.svg" alt="flag-england"
+                                                    class="match__flag">
+                                                <span class="match__name">Англия</span>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </a>
+                                <a class="match__video _icon-play tippy popup-link" data-tippy-content="Видеообзор"
+                                    href="#video"
+                                    data-link="https://www.youtube.com/embed/KcMQYrQKZko?version=3&&playlist=KcMQYrQKZko&autoplay=1&loop=1"></a>
+                            </div>
+        `
+        matchesBlock.innerHTML = cart;
+        console.log(cart);
+    });
+
+
+}*/
 

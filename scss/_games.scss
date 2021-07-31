@@ -1,0 +1,247 @@
+._active-link::after {
+    opacity: 1;
+    visibility: visible;
+    background-color: #ffffff;
+}
+.menu__list-link._active-link:hover {
+    color: #ffffff;
+}
+
+.main-games {
+    background-color: rgb(240, 240, 240);
+    position: relative;
+    &::after {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(255, 255, 255, 0.7) url("../images/tenor.gif") center / 50px no-repeat;
+        transition: 0.5s;
+        opacity: 0;
+        visibility: hidden;
+        z-index: 100;
+    }
+    &._loading::after {
+        opacity: 1;
+        visibility: visible;
+    }
+}
+.stages {
+    max-height: 120px;
+    &__swiper {
+        @media (min-width: 600px) {
+            max-width: 1300px;
+            @media (max-width: 1440px) {
+                max-width: calc(200px + 1100 * ((100vw - 320px) / (1440 - 320)));
+            }
+        }
+    }
+    &__inner {
+        position: relative;
+    }
+    &__inner .swiper-button-next:after,
+    .swiper-button-prev:after {
+        color: #0084a4;
+        font-size: 14px;
+        font-weight: 800;
+        transition: color 0.3s;
+    }
+    &__inner .swiper-button-next {
+        width: 40px;
+        height: 40px;
+        border: 2px solid #0084a4;
+        border-radius: 50%;
+        transition: 0.3s;
+        right: 0;
+        &::after {
+            padding-left: 3px;
+        }
+    }
+    &__inner .swiper-button-prev {
+        width: 40px;
+        height: 40px;
+        border: 2px solid #0084a4;
+        border-radius: 50%;
+        transition: 0.3s;
+        left: 0;
+        &::after {
+            padding-right: 3px;
+        }
+    }
+    @media (max-width: 599px) {
+        &__inner .swiper-button-prev,
+        .swiper-button-next {
+            opacity: 0;
+            visibility: hidden;
+        }
+    }
+    @media (max-width: 379px) {
+        &__inner .swiper-button-prev,
+        .swiper-button-next {
+            opacity: 1;
+            visibility: visible;
+        }
+    }
+}
+.stage {
+    position: relative;
+    padding: 30px 5px;
+    text-align: center;
+    box-shadow: inset 0px -4px 0px $clg;
+    &._active-tab {
+        box-shadow: inset 0px -4px 0px $csl;
+        & .stage__btn::after {
+            opacity: 1;
+            visibility: visible;
+        }
+    }
+    &__btn {
+        border: none;
+        background-color: inherit;
+        color: #000;
+        padding: 0;
+        line-height: 24px;
+        cursor: pointer;
+        width: 100%;
+        &::after {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(211, 211, 211, 0.1);
+            box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.2);
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.3s;
+        }
+    }
+
+    &__text {
+        font-family: "Pfbeausanspro-regular";
+    }
+
+    &__date {
+        font-family: "pfbeausanspro-light";
+        font-size: 13px;
+        font-weight: 300;
+    }
+}
+.matches {
+    &__inner {
+        padding: calc(15px + 20 * ((100vw - 280px) / (1420 - 280))) 0 calc(25px + 45 * ((100vw - 280px) / (1420 - 280)));
+        color: #000;
+    }
+    &__title {
+        font-size: 20px;
+        margin: 35px 0 15px 0;
+    }
+
+    &__cart {
+        background-color: #ffffff;
+        box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.1);
+        position: relative;
+        margin-bottom: 10px;
+    }
+    &__link {
+        padding: 20px;
+        display: grid;
+        grid-template-columns: 0.3fr 1fr 0.3fr;
+        align-items: center;
+        transition: background-color 0.3s;
+        @media (max-width: 1000px) {
+            grid-template-columns: 0.2fr 1fr 0.1fr;
+        }
+    }
+    &__info {
+        padding-left: 10px;
+    }
+}
+
+.info-text {
+    font-size: 16px;
+    font-family: "Pfbeausanspro-regular";
+}
+.info-location {
+    font-size: 14px;
+}
+.match {
+    display: grid;
+    grid-template-columns: 1fr 0.5fr 1fr;
+
+    &__extra {
+        font-size: 12px;
+        font-family: "pfbeausanspro-light";
+    }
+
+    &__team-1 {
+        display: flex;
+        align-items: center;
+        justify-content: flex-end;
+    }
+    &__team-2 {
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
+    }
+
+    &__name {
+        padding: 0 10px;
+    }
+
+    &__flag {
+        width: 40px;
+        height: 40px;
+        filter: drop-shadow(1px 1px 2px rgba(0, 0, 0, 0.6));
+    }
+
+    &__score {
+        font-family: "Bridge Type";
+        color: #000;
+        font-size: 24px;
+        padding: 0 5px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    &__video {
+        position: absolute;
+        top: calc(50% - 25px);
+        right: 10px;
+        padding: 10px;
+        border-radius: 50%;
+    }
+}
+.match__video._icon-play::before {
+    font-size: 30px;
+    color: $cbl2;
+    transition: color 0.3s;
+}
+@media (max-width: 706px) {
+    .matches__info {
+        display: none;
+    }
+    .match__video {
+        display: none;
+    }
+    .matches__link {
+        grid-template-columns: 1fr;
+        padding: 15px 5px;
+    }
+    .match__flag {
+        width: 25px;
+        height: 25px;
+    }
+    .match__score {
+        font-size: 18px;
+    }
+}
+@media (max-width: 360px) {
+    .match {
+        font-size: 12px;
+    }
+}

@@ -65,8 +65,20 @@
         visibility: visible;
         opacity: 1;
     }
+    & .stage__btn:hover::after {
+        visibility: visible;
+        opacity: 1;
+    }
     & .sub-menu__inner .swiper-button-next:hover,
     .sub-menu__inner .swiper-button-prev:hover {
+        background-color: $cbl;
+        border: 2px solid $cbl;
+        &::after {
+            color: #ffffff;
+        }
+    }
+    & .stages__inner .swiper-button-next:hover,
+    .stages__inner .swiper-button-prev:hover {
         background-color: $cbl;
         border: 2px solid $cbl;
         &::after {
@@ -115,6 +127,14 @@
     }
     & .scroll-top:hover {
         background-color: #03bcd8;
+    }
+    & .matches__link:hover {
+        background-color: #f1f4f7;
+    }
+    & .match__video:hover {
+        &::before {
+            color: $cog;
+        }
     }
 }
 #logo__svg {
