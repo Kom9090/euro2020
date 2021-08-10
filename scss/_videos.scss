@@ -114,3 +114,8 @@
     display: flex;
     justify-content: center;
 }
+@media (max-width: 390px) {
+    .videos__navigation {
+        width: 110px;
+    }
+}

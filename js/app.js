@@ -105,7 +105,7 @@ function bodyLock() {
             el.getElementsByClassName.paddingRight = lockPaddingValue;
         }
     }
-
+    document.querySelector(".header__wrapper").style.paddingRight = lockPaddingValue;
     body.style.paddingRight = lockPaddingValue;
     body.classList.add("lock");
     unlock = false;
@@ -119,6 +119,7 @@ function bodyUnLock() {
             const el = lockPadding[index];
             el.style.paddingRight = "0px";
         }
+        document.querySelector(".header__wrapper").style.paddingRight = "0px";
         body.style.paddingRight = "0px";
         body.classList.remove("lock");
     }, timeout);
@@ -250,10 +251,10 @@ new Swiper(".stages__swiper", {
             slidesPerGroup: 1,
         },
         380: {
-            slidesPerView: 2,
+            slidesPerView: 1.3,
             slidesPerGroup: 1,
         },
-        600: {
+        500: {
             slidesPerView: 2,
             slidesPerGroup: 1,
         },
@@ -302,6 +303,8 @@ new Swiper(".column__swiper", {
             slidesPerView: 1,
         }
     },
+    simulateTouch: false,
+    touchRatio: 0,
     keyboard: {
         enabled: true,
         onlyInViewport: true,
@@ -698,14 +701,12 @@ new Swiper(".videos__swiper", {
         },
     },
     spaceBetween: 30,
+    simulateTouch: false,
     keyboard: {
         enabled: true,
         onlyInViewport: true,
         pageUpDown: true,
     },
-    mousewheel: {
-        sensitivity: 1,
-    }
 });
 
 //tooltip
@@ -1012,7 +1013,12 @@ for (let index = 0; index < stageBtnArr.length; index++) {
         }
         stages.parentElement.classList.add("_active-tab");
         hideMatches();
-        getMatchs(index);
+        if (document.querySelector(`.tab${index}`)) {
+            document.querySelector(`.tab${index}`).style.display = "block";
+        }
+        else {
+            getMatchs(index);
+        }
     });
 }
 function hideMatches() {
@@ -1024,7 +1030,6 @@ function hideMatches() {
 }
 async function getMatchs(index) {
     const main = document.querySelector(".main-games");
-
     main.classList.add("_loading");
     let data = await fetch("json/matches.json", {
         method: "GET",
@@ -1032,87 +1037,23 @@ async function getMatchs(index) {
     if (data.ok) {
         let result = await data.json();
         main.classList.remove("_loading");
-        if (document.querySelector(`.tab${index}`)) {
-            document.querySelector(`.tab${index}`).style.display = "block";
-        }
-        else {
-            const tabArr = result.st[index];
-            const stId = tabArr.id;
-            const stContent = tabArr.linkm;
-            let cartR = await fetch(`${stContent}`, {
-                method: "GET",
-            });
-            let cart = await cartR.text();
-            const div = document.createElement("div");
-            div.classList.add("matches__inner");
-            div.classList.add(`tab${stId}`);
-            div.innerHTML = cart;
-            document.querySelector(".matches-container").append(div);
-
-        }
+        const tabArr = result.st[index];
+        const stId = tabArr.id;
+        const stContent = tabArr.link;
+        let dataCart = await fetch(`${stContent}`, {
+            method: "GET",
+        });
+        let cart = await dataCart.text();
+        const div = document.createElement("div");
+        div.classList.add("matches__inner");
+        div.classList.add(`tab${stId}`);
+        div.innerHTML = cart;
+        document.querySelector(".matches-container").append(div);
 
     } else {
         main.classList.remove("_loading");
         alert(`Данные не были получены, ошибка ${data.status} ${data.statusText}`);
     }
 }
-/*
-function showMatch(result) {
-    let testr = result.news;
-    console.log(testr);
 
-
-
-
-}*/
-
-
-/*
-function loadMatches(resp) {
-    const matchesBlock = document.querySelector(".matches__block");
-    resp.news.forEach(item => {
-        const newsId = item.id;
-        const newsUrl = item.url;
-        const newsImg = item.img;
-        const newsDate = item.date;
-        const newsName = item.name;
-
-        let cart = `
-                        <h3 class="matches__title">
-                                ${newsDate}
-                            </h3>
-                            <div class="matches__cart">
-                                <a href="${newsUrl}" class="matches__link">
-                                    <div class="matches__info">
-                                        <p class="info-text">${newsName}</p>
-                                        <span class="info-location">Вембли, Лондон ${newsId}</span>
-                                    </div>
-                                    <div class="match">
-                                        <div class="match__extra">Победа Италии по пенальти (3 - 2)</div>
-                                        <div class="match__main">
-                                            <div class="match__team">
-                                                <span class="match__name">Италия</span>
-                                                <img src="${newsImg}" alt="flag-italy" class="match__flag">
-                                            </div>
-                                            <div class="match__score">1 - 1</div>
-                                            <div class="match__team">
-                                                <img src="images/121-england.svg" alt="flag-england"
-                                                    class="match__flag">
-                                                <span class="match__name">Англия</span>
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                </a>
-                                <a class="match__video _icon-play tippy popup-link" data-tippy-content="Видеообзор"
-                                    href="#video"
-                                    data-link="https://www.youtube.com/embed/KcMQYrQKZko?version=3&&playlist=KcMQYrQKZko&autoplay=1&loop=1"></a>
-                            </div>
-        `
-        matchesBlock.innerHTML = cart;
-        console.log(cart);
-    });
-
-
-}*/
 

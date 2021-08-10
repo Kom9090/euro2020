@@ -34,7 +34,7 @@
                                     class="menu__list-link anchors">Новости</a>
                             </li>
                             <li class="menu__list-item"><a href="games.html" target="_blank"
-                                    class="menu__list-link _active-link">Матч-центр</a></li>
+                                    class="menu__list-link">Матч-центр</a></li>
                             <li class="menu__list-item">
                                 <a href="index.html" data-goto=".teams-section"
                                     class="menu__list-link anchors">Команды</a>
@@ -66,107 +66,270 @@
         </div>
     </header>
     <div class="content">
-        <main class="main main-games">
-            <div class="stages">
+        <main class="main">
+            <div class="match-top">
                 <div class="container">
-                    <div class="stages__inner">
-                        <div class="stages__swiper swiper-container">
-                            <div class="stages__wrapper swiper-wrapper">
-                                <div class="swiper-slide">
-                                    <div class="stage">
-                                        <button class="stage__btn">
-                                            <p class="stage__text">Груповой этап, 1 тур</p>
-                                            <span class="stage__date">Июнь, 2021</span>
-                                        </button>
-                                    </div>
-                                </div>
-                                <div class="swiper-slide">
-                                    <div class="stage">
-                                        <button class="stage__btn">
-                                            <p class="stage__text">Групповой этап, 2 тур</p>
-                                            <span class="stage__date">Июнь, 2021</span>
-                                        </button>
-                                    </div>
-                                </div>
-                                <div class="swiper-slide">
-                                    <div class="stage">
-                                        <button class="stage__btn">
-                                            <p class="stage__text">Групповой этап, 3 тур</p>
-                                            <span class="stage__date">Июнь, 2021</span>
-                                        </button>
-                                    </div>
-                                </div>
-                                <div class="swiper-slide">
-                                    <div class="stage">
-                                        <button class="stage__btn">
-                                            <p class="stage__text">1/8 финала</p>
-                                            <span class="stage__date">Июнь - Июль, 2021</span>
-                                        </button>
-                                    </div>
-                                </div>
-                                <div class="swiper-slide">
-                                    <div class="stage">
-                                        <button class="stage__btn">
-                                            <p class="stage__text">Четвертьфинал</p>
-                                            <span class="stage__date">Июль, 2021</span>
-                                        </button>
-                                    </div>
-                                </div>
-                                <div class="swiper-slide">
-                                    <div class="stage">
-                                        <button class="stage__btn">
-                                            <p class="stage__text">Полуфинал</p>
-                                            <span class="stage__date">Июль, 2021</span>
-                                        </button>
-                                    </div>
-                                </div>
-                                <div class="swiper-slide">
-                                    <div class="stage _active-tab">
-                                        <button class="stage__btn">
-                                            <p class="stage__text">Финал</p>
-                                            <span class="stage__date">Июль, 2021</span>
-                                        </button>
-                                    </div>
-                                </div>
+                    <div class="match-top__inner">
+                        <p class="match-top__stage">Финал</p>
+                        <p class="match-top__location">Вембли Лондон</p>
+                        <div class="match-top__teams">
+                            <div class="match-top__team">
+                                <span class="match-top__name">Италия</span>
+                                <img src="./images/263-italy.svg" alt="flag" class="match-top__flag">
+                            </div>
+                            <div class="match-top__score">
+                                <p class="match-top__main-score">1 - 1</p>
+                                <p class="match-top__extra">(3 - 2)</p>
+                            </div>
+                            <div class="match-top__team">
+                                <img src="./images/121-england.svg" alt="flag" class="match-top__flag">
+                                <span class="match-top__name">Англия</span>
+
                             </div>
                         </div>
-                        <div class="swiper-button-prev"></div>
-                        <div class="swiper-button-next"></div>
                     </div>
                 </div>
             </div>
-            <div class="matches">
-                <div class="container matches-container">
-                    <div class="matches__inner tab6">
-                        <div class="matches__block ">
-                            <h3 class="matches__title">
-                                Воскресенье 12 июля 2021
-                            </h3>
-                            <div class="matches__cart">
-                                <a href="#" class="matches__link">
-                                    <div class="matches__info">
-                                        <p class="info-text">Финал</p>
-                                        <span class="info-location">Вембли, Лондон</span>
-                                    </div>
-                                    <div class="match">
-                                        <div class="match__team-1">
-                                            <span class="match__name">Италия</span>
-                                            <img src="images/263-italy.svg" alt="flag-italy" class="match__flag">
-                                        </div>
-                                        <div class="match__score">1 - 1<span class="match__extra">(3 - 2)</span></div>
+            <div class="timeline">
+                <div class="container">
+                    <div class="timeline__inner">
+                        <div class="line _icon-stop">
+                            <img class="line__flag flag1" src="images/263-italy.svg" alt="">
+                            <div class="line__event top-event" style="left: 10%">
+                                <span class="event-time-top _icon-goal tippy"
+                                    data-tippy-content="2' ГОЛ Шоу (ассист Трипьер)"></span>
+                            </div>
+                            <div class="line__event bottom-event" style="left: 47%">
+                                <span class="event-time-bottom _icon-yellow tippy"
+                                    data-tippy-content="47' Барелла"></span>
+                            </div>
+                            <div class="line__event bottom-event" style="left: 55%">
+                                <span class="event-time-bottom _icon-yellow tippy"
+                                    data-tippy-content="55' Бонуччи"></span>
+                            </div>
+                            <div class="line__event bottom-event" style="left: 67%">
+                                <span class="event-time-bottom _icon-goal tippy"
+                                    data-tippy-content="67' ГОЛ Бонуччи (ассист Вератии)"></span>
+                            </div>
+                            <div class="line__event bottom-event" style="left: 86%">
+                                <span class="event-time-bottom _icon-yellow tippy"
+                                    data-tippy-content="86' Инсинье"></span>
+                            </div>
+                            <div class="line__event bottom-event" style="left: 96%">
+                                <span class="event-time-bottom _icon-yellow tippy"
+                                    data-tippy-content="90 + 6' Кьелини"></span>
+                            </div>
+                            <img class="line__flag flag2" src="images/121-england.svg" alt="">
+                        </div>
+                        <div class="tabs__title">
+                            <button class="tabs__btn">События</button>
+                            <button class="tabs__btn _active-tabs">Составы</button>
+                            <button class="tabs__btn">Статистика</button>
+                            <button class="tabs__btn">Обзор</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="part">
+                <div class="container">
+                    <div class="part__inner">
+                        <div class="part__squad _show-part">
+                            <div class="squad">
+                                <table class="squad__table">
+                                    <thead>
+                                        <tr>
+                                            <th>Италия</th>
+                                            <th></th>
 
-                                        <div class="match__team-2">
-                                            <img src="images/121-england.svg" alt="flag-england" class="match__flag">
-                                            <span class="match__name">Англия</span>
-                                        </div>
-                                    </div>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <th>1</th>
+                                            <th>Италия</th>
+                                        </tr>
+                                        <tr>
+                                            <th>2</th>
+                                            <th>Италия</th>
+                                        </tr>
+                                        <tr>
+                                            <th>3</th>
+                                            <th>Италия</th>
+                                        </tr>
+                                        <tr>
+                                            <th>5</th>
+                                            <th>Италия</th>
+                                        </tr>
+                                        <tr>
+                                            <th>14</th>
+                                            <th>Италия</th>
+                                        </tr>
+                                        <tr>
+                                            <th>10</th>
+                                            <th>Италия</th>
+                                        </tr>
+                                        <tr>
+                                            <th>17</th>
+                                            <th>Италия</th>
+                                        </tr>
+                                        <tr>
+                                            <th>7</th>
+                                            <th>Италия</th>
+                                        </tr>
+                                        <tr>
+                                            <th>11</th>
+                                            <th>Италия</th>
+                                        </tr>
+                                        <tr>
+                                            <th>9</th>
+                                            <th>Италия</th>
+                                        </tr>
+                                        <tr>
+                                            <th>27</th>
+                                            <th>Италия</th>
+                                        </tr>
+                                        <tr class="squad__border">
+                                            <th>Запасные</th>
+                                            <th></th>
+                                        </tr>
+                                        <tr>
+                                            <th>27</th>
+                                            <th>Италия</th>
+                                        </tr>
+                                        <tr>
+                                            <th>27</th>
+                                            <th>Италия</th>
+                                        </tr>
+                                        <tr>
+                                            <th>27</th>
+                                            <th>Италия</th>
+                                        </tr>
+                                        <tr>
+                                            <th>27</th>
+                                            <th>Италия</th>
+                                        </tr>
+                                        <tr>
+                                            <th>27</th>
+                                            <th>Италия</th>
+                                        </tr>
+                                        <tr>
+                                            <th>27</th>
+                                            <th>Италия</th>
+                                        </tr>
+                                    </tbody>
+                                </table>
 
-                                </a>
-                                <a class="match__video _icon-play tippy popup-link" data-tippy-content="Видеообзор"
-                                    href="#video"
-                                    data-link="https://www.youtube.com/embed/KcMQYrQKZko?version=3&&playlist=KcMQYrQKZko&autoplay=1&loop=1"></a>
+                                <div class="squad__field">
+                                    <div class="squad__first">
+                                        <div class="squad__player"></div>
+                                        <div class="squad__player"></div>
+                                        <div class="squad__player"></div>
+                                        <div class="squad__player"></div>
+                                        <div class="squad__player"></div>
+                                        <div class="squad__player"></div>
+                                        <div class="squad__player"></div>
+                                        <div class="squad__player"></div>
+                                        <div class="squad__player"></div>
+                                        <div class="squad__player"></div>
+                                        <div class="squad__player"></div>
+                                    </div>
+                                    <div class="squad__second">
+                                        <div class="squad__player"></div>
+                                        <div class="squad__player"></div>
+                                        <div class="squad__player"></div>
+                                        <div class="squad__player"></div>
+                                        <div class="squad__player"></div>
+                                        <div class="squad__player"></div>
+                                        <div class="squad__player"></div>
+                                        <div class="squad__player"></div>
+                                        <div class="squad__player"></div>
+                                        <div class="squad__player"></div>
+                                        <div class="squad__player"></div>
+                                    </div>
+                                </div>
+                                <table class="squad__table">
+                                    <thead>
+                                        <tr>
+                                            <th></th>
+                                            <th>Англия</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <th>Пикфорд</th>
+                                            <th>1</th>
+                                        </tr>
+                                        <tr>
+                                            <th>Пикфорд</th>
+                                            <th>1</th>
+                                        </tr>
+                                        <tr>
+                                            <th>Пикфорд</th>
+                                            <th>1</th>
+                                        </tr>
+                                        <tr>
+                                            <th>Пикфорд</th>
+                                            <th>1</th>
+                                        </tr>
+                                        <tr>
+                                            <th>Пикфорд</th>
+                                            <th>1</th>
+                                        </tr>
+                                        <tr>
+                                            <th>Пикфорд</th>
+                                            <th>1</th>
+                                        </tr>
+                                        <tr>
+                                            <th>Пикфорд</th>
+                                            <th>1</th>
+                                        </tr>
+                                        <tr>
+                                            <th>Пикфорд</th>
+                                            <th>1</th>
+                                        </tr>
+                                        <tr>
+                                            <th>Пикфорд</th>
+                                            <th>1</th>
+                                        </tr>
+                                        <tr>
+                                            <th>Пикфорд</th>
+                                            <th>1</th>
+                                        </tr>
+                                        <tr>
+                                            <th>Пикфорд</th>
+                                            <th>1</th>
+                                        </tr>
+                                        <tr class="squad__border">
+                                            <th></th>
+                                            <th>Запасные</th>
+                                        </tr>
+                                        <tr>
+                                            <th>Пикфорд</th>
+                                            <th>1</th>
+                                        </tr>
+                                        <tr>
+                                            <th>Пикфорд</th>
+                                            <th>1</th>
+                                        </tr>
+                                        <tr>
+                                            <th>Пикфорд</th>
+                                            <th>1</th>
+                                        </tr>
+                                        <tr>
+                                            <th>Пикфорд</th>
+                                            <th>1</th>
+                                        </tr>
+                                        <tr>
+                                            <th>Пикфорд</th>
+                                            <th>1</th>
+                                        </tr>
+                                    </tbody>
+                                </table>
                             </div>
                         </div>
+                        <div class="part__events"></div>
+                        <div class="part__events"></div>
+                        <div class="part__events"></div>
                     </div>
                 </div>
             </div>
@@ -219,6 +382,7 @@
             </div>
         </footer>
     </div>
+
     <div id="sign_in" class="popup">
         <div class="popup__content">
             <div class="popup__window popap-in">

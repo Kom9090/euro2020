@@ -1,6 +1,9 @@
 .groups {
     background: url("../images/bggroup.webp") center no-repeat fixed;
     position: relative;
+    @media (max-width: 1000px) {
+        background-attachment: scroll;
+    }
     &__mask {
         width: 100%;
         height: 100%;
