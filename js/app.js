@@ -1,6 +1,6 @@
-//hovers
-
 const body = document.querySelector("body");
+
+//hovers
 window.addEventListener("load", function () {
     let isMobile = navigator.userAgent.toLowerCase().match(/mobile/i);
     if (isMobile) {
@@ -11,36 +11,25 @@ window.addEventListener("load", function () {
 });
 
 //burger
+document.querySelector(".header__menu-icon").addEventListener("click", function () {
+    const burgerIcon = document.querySelector(".header__menu-icon");
+    const menuBurger = document.querySelector(".menu__list");
+    burgerIcon.classList.toggle("_active-burger");
+    menuBurger.classList.toggle("_active-nav");
+    if (burgerIcon.classList.contains("_active-burger")) {
+        bodyLock();
+        document.documentElement.addEventListener("click", function (e) {
+            if (!e.target.closest(".header__menu-icon")) {
+                burgerIcon.classList.remove("_active-burger");
+                menuBurger.classList.remove("_active-nav");
+                bodyUnLock();
+            }
+        });
+    } else {
+        bodyUnLock();
+    }
+});
 
-let burgerChange = document.querySelector(".header__menu-icon");
-burgerChange.addEventListener("click", function (e) {
-    let newChange = document.querySelector(".header__menu-icon");
-    newChange.classList.toggle("_active-burger");
-});
-burgerChange.addEventListener("click", function (e) {
-    let menuStart = document.querySelector(".menu__list");
-    menuStart.classList.toggle("_active-nav");
-});
-burgerChange.addEventListener("click", function (e) {
-    body.classList.toggle("_lock");
-});
-document.documentElement.addEventListener("click", function (e) {
-    if (!e.target.closest(".header__menu-icon")) {
-        let burg_menu = document.querySelector(".header__menu-icon");
-        burg_menu.classList.remove("_active-burger");
-    }
-});
-document.documentElement.addEventListener("click", function (e) {
-    if (!e.target.closest(".header__menu-icon")) {
-        let burg_menu = document.querySelector(".menu__list");
-        burg_menu.classList.remove("_active-nav");
-    }
-});
-document.documentElement.addEventListener("click", function (e) {
-    if (!e.target.closest(".header__menu-icon")) {
-        body.classList.remove("_lock");
-    }
-});
 
 //popap
 const frame = document.querySelector(".video__wrapper iframe");
@@ -135,54 +124,54 @@ document.addEventListener("keydown", function (e) {
     }
 });
 
-//input focus
-
-let input = document.querySelectorAll(".form__input");
-for (let k = 0; k < input.length; k++) {
-    input[k].addEventListener("focus", function (e) {
-        input[k].previousElementSibling.classList.add("_focus-input");
-    });
-    input[k].addEventListener("blur", function (e) {
-        if (input[k].value == "") {
-            input[k].previousElementSibling.classList.remove("_focus-input");
-        }
-    });
-}
-
+//label-top
+document.addEventListener("DOMContentLoaded", () => {
+    let input = document.querySelectorAll(".form__input");
+    for (let i = 0; i < input.length; i++) {
+        input[i].addEventListener("focus", function (e) {
+            input[i].previousElementSibling.classList.add("_focus-input");
+        });
+        input[i].addEventListener("blur", function (e) {
+            if (input[i].value == "") {
+                input[i].previousElementSibling.classList.remove("_focus-input");
+            }
+        });
+    }
+});
 //show password
-
-let passF = document.querySelectorAll(".password-input");
-for (let l = 0; l < passF.length; l++) {
-    passF[l].addEventListener("focus", function (e) {
-        let showBtn = passF[l].parentElement.querySelector(".show-password-btn");
-        showBtn.classList.add("_focus-btn");
-    });
-    passF[l].addEventListener("blur", function (e) {
-        if (passF[l].value == "") {
-            let showBtn = passF[l].parentElement.querySelector(".show-password-btn");
-            showBtn.classList.remove("_focus-btn");
-        }
-    });
-}
-let view = document.querySelectorAll(".show-password-btn")
-for (let r = 0; r < view.length; r++) {
-    view[r].addEventListener("click", function (e) {
-        view[r].classList.toggle("_active-show");
-        let inputPd = view[r].parentElement.querySelector(".password-input");
-        if (inputPd.getAttribute("type") === "password") {
-            inputPd.setAttribute("type", "text");
-        } else {
-            inputPd.setAttribute("type", "password");
-        }
-    });
-}
+document.addEventListener("DOMContentLoaded", () => {
+    let passwordInput = document.querySelectorAll(".password-input");
+    for (let i = 0; i < passwordInput.length; i++) {
+        let showPass = passwordInput[i].parentElement.querySelector(".show-password-btn");
+        passwordInput[i].addEventListener("focus", function () {
+            showPass.classList.add("_focus-btn");
+        });
+        passwordInput[i].addEventListener("blur", function () {
+            if (passwordInput[i].value == "") {
+                showPass.classList.remove("_focus-btn");
+            }
+        });
+    }
+    let view = document.querySelectorAll(".show-password-btn");
+    for (let i = 0; i < view.length; i++) {
+        view[i].addEventListener("click", function () {
+            view[i].classList.toggle("_active-show");
+            let inputPd = view[i].parentElement.querySelector(".password-input");
+            if (inputPd.getAttribute("type") === "password") {
+                inputPd.setAttribute("type", "text");
+            } else {
+                inputPd.setAttribute("type", "password");
+            }
+        });
+    }
+});
 
 //content top
 
-let contentTop = document.querySelector(".content");
 let headerHeight = document.querySelector(".header__wrapper").offsetHeight + "px";
 if (headerHeight !== "74px") {
     window.addEventListener("load", function (e) {
+        let contentTop = document.querySelector(".content");
         contentTop.style.paddingTop = String(headerHeight);
     });
 }
@@ -237,6 +226,8 @@ new Swiper(".sub-menu__swiper", {
     }
 });
 
+//swiper game-page
+
 new Swiper(".stages__swiper", {
     navigation: {
         nextEl: ".stages__inner .swiper-button-next",
@@ -285,6 +276,7 @@ new Swiper(".stages__swiper", {
         sensitivity: 1,
     }
 });
+
 // swiper news
 
 new Swiper(".column__swiper", {
@@ -645,10 +637,8 @@ DynamicAdapt.prototype.arraySort = function (arr) {
 const da = new DynamicAdapt("min");
 da.init();
 
+
 // прокрутка к якорю
-
-
-
 
 const menuLinks = document.querySelectorAll(".anchors[data-goto]");
 if (menuLinks.length > 0) {
@@ -668,18 +658,20 @@ if (menuLinks.length > 0) {
         }
     }
 }
+
 //кнопка наверх
-const showAn = document.querySelector(".scroll-top");
+const scrollTop = document.querySelector(".scroll-top");
+
 window.onscroll = () => {
     if (window.scrollY > 700) {
-        showAn.classList.remove("_show-top");
+        scrollTop.classList.remove("_show-top");
     }
     else {
-        showAn.classList.add("_show-top");
+        scrollTop.classList.add("_show-top");
     }
 };
 
-// video
+// video swiper
 
 new Swiper(".videos__swiper", {
     navigation: {
@@ -687,11 +679,17 @@ new Swiper(".videos__swiper", {
         prevEl: ".videos__inner .swiper-button-prev"
     },
     breakpoints: {
-        320: {
+        280: {
             slidesPerView: 1,
         },
-        600: {
+        300: {
+            slidesPerView: 1.5,
+        },
+        500: {
             slidesPerView: 2,
+        },
+        580: {
+            slidesPerView: 2.5,
         },
         780: {
             slidesPerView: 3,
@@ -709,7 +707,8 @@ new Swiper(".videos__swiper", {
     },
 });
 
-//tooltip
+//tooltips
+
 tippy(document.querySelectorAll(".tippy"), {
     followCursor: 'horizontal',
     maxWidth: 350,
@@ -724,19 +723,6 @@ tippy(document.querySelectorAll(".helper-text"), {
     delay: [300, 0],
     touch: true,
 });
-
-/*const gameLinkArr = document.querySelectorAll(".game__link");
-const firstTeam = document.querySelectorAll("[data-goalf]");
-const secondTeam = document.querySelectorAll("[data-goals]");
-for (let i = 0; i < gameLinkArr.length; i++) {
-    gameLinkArr[i].addEventListener("mouseover", function (e) {
-        let goallf = firstTeam[i].dataset.goalf;
-        let goalls = secondTeam[i].dataset.goals;
-        let lineClass = goallf == "" || goalls == "" ? "" : "tooltip-line";
-
-        
-    });
-}*/
 
 tippy(document.querySelectorAll(".game__link"), {
     placement: 'bottom',

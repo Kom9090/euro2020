@@ -1,5 +1,5 @@
 .groups {
-    background: url("../images/bggroup.webp") center no-repeat fixed;
+    background: url("../images/bggroup.jpg") center no-repeat fixed;
     position: relative;
     @media (max-width: 1000px) {
         background-attachment: scroll;
@@ -106,7 +106,8 @@
     &__head {
         background-color: #ffffff;
         & th {
-            text-align: start;
+            text-align: center;
+            padding: 0 5px;
         }
     }
     &__body tr {
@@ -117,7 +118,7 @@
     }
     &__body th {
         padding: 0 5px;
-        text-align: start;
+        text-align: center;
     }
     &__team {
         display: flex;
@@ -128,4 +129,7 @@
         filter: drop-shadow(1px 1px 2px rgba(0, 0, 0, 0.6));
         transition: filter 0.3s;
     }
+}
+th.table__main {
+    text-align: left;
 }

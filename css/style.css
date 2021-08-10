@@ -362,7 +362,7 @@ body._lock {
   }
 }
 
-@media (min-width: 849px) {
+@media (min-width: 850px) {
   .menu__list {
     display: -webkit-box;
     display: -ms-flexbox;
@@ -375,7 +375,7 @@ body._lock {
   }
 }
 
-@media (max-width: 850px) {
+@media (max-width: 849px) {
   .menu__list {
     position: fixed;
     width: 100%;
@@ -426,6 +426,12 @@ body._lock {
   visibility: hidden;
   -webkit-transition: 0.4s;
   transition: 0.4s;
+}
+
+@media (max-width: 849px) {
+  .menu__list-link {
+    font-size: 20px;
+  }
 }
 
 @media (max-width: 849px) {
@@ -1311,6 +1317,12 @@ body._lock {
   top: -40px;
 }
 
+@media (max-width: 400px) {
+  .close-video {
+    top: 10px;
+  }
+}
+
 ._result {
   color: #5a6366;
   padding: 50px;
@@ -1460,11 +1472,11 @@ body._lock {
 }
 
 .news {
-  background: url("../images/backgroundbl.webp") 0 0/cover no-repeat;
+  background: url("../images/backgroundbl.jpg") 0 0/cover no-repeat;
 }
 
 .news__inner {
-  padding: calc(15px + 15 * ((100vw - 280px) / (1420 - 280))) 0;
+  padding: calc(15px + 15 * ((100vw - 280px) / (1420 - 280))) 0 calc(15px + 35 * ((100vw - 280px) / (1420 - 280))) 0;
 }
 
 .news__wrapper {
@@ -1835,7 +1847,7 @@ body._lock {
 }
 
 .groups {
-  background: url("../images/bggroup.webp") center no-repeat fixed;
+  background: url("../images/bggroup.jpg") center no-repeat fixed;
   position: relative;
 }
 
@@ -2016,7 +2028,8 @@ body._lock {
 }
 
 .table__head th {
-  text-align: start;
+  text-align: center;
+  padding: 0 5px;
 }
 
 .table__body tr {
@@ -2029,7 +2042,7 @@ body._lock {
 
 .table__body th {
   padding: 0 5px;
-  text-align: start;
+  text-align: center;
 }
 
 .table__team {
@@ -2049,6 +2062,10 @@ body._lock {
   transition: -webkit-filter 0.3s;
   transition: filter 0.3s;
   transition: filter 0.3s, -webkit-filter 0.3s;
+}
+
+th.table__main {
+  text-align: left;
 }
 
 .cities {
@@ -2386,7 +2403,7 @@ body._lock {
 
 .videos__preview {
   width: 100%;
-  height: 200px;
+  height: calc(150px + 50 * ((100vw - 280px) / (1920 - 280)));
   overflow: hidden;
   position: relative;
 }

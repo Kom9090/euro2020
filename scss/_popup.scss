@@ -380,6 +380,9 @@
 }
 .close-video {
     top: -40px;
+    @media (max-width: 400px) {
+        top: 10px;
+    }
 }
 ._result {
     color: $cdg;

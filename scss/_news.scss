@@ -1,7 +1,8 @@
 .news {
-    background: url("../images/backgroundbl.webp") 0 0 / cover no-repeat;
+    background: url("../images/backgroundbl.jpg") 0 0 / cover no-repeat;
     &__inner {
-        padding: calc(15px + 15 * ((100vw - 280px) / (1420 - 280))) 0;
+        padding: calc(15px + 15 * ((100vw - 280px) / (1420 - 280))) 0 calc(15px + 35 * ((100vw - 280px) / (1420 - 280)))
+            0;
     }
     &__wrapper {
         margin: 10px 0 0;
