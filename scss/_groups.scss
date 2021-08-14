@@ -1,8 +1,25 @@
 .groups {
-    background: url("../images/bggroup.jpg") center no-repeat fixed;
     position: relative;
-    @media (max-width: 1000px) {
-        background-attachment: scroll;
+    &::before {
+        content: "";
+        background: url("../images/bggroup.jpg") center no-repeat;
+        position: absolute;
+        height: 100%;
+        width: 100%;
+        z-index: -2;
+    }
+    @media (min-width: 1000px) {
+        &::before {
+            background: url("../images/bggroup.jpg") center no-repeat;
+            position: fixed;
+            content: "";
+            left: 0;
+            top: 0;
+            will-change: transform;
+            height: 100%;
+            width: 100%;
+            z-index: -2;
+        }
     }
     &__mask {
         width: 100%;

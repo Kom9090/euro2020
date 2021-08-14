@@ -400,3 +400,39 @@
         color: white;
     }
 }
+.forget {
+    &_block {
+        max-width: 320px;
+        color: $cdg;
+        margin: 0 10px;
+    }
+
+    &__title {
+        font-size: 20px;
+        text-align: center;
+    }
+
+    &__text {
+        padding-top: 20px;
+        line-height: 140%;
+    }
+}
+.form-send {
+    &::after {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(10, 9, 12, 0.6) url("../images/tenor.gif") center / 50px no-repeat;
+        opacity: 0;
+        visibility: hidden;
+        transition: 0.5s;
+        z-index: 100;
+    }
+    &._sending::after {
+        opacity: 1;
+        visibility: visible;
+    }
+}

@@ -1342,8 +1342,45 @@ body._lock {
   color: white;
 }
 
+.forget_block {
+  max-width: 320px;
+  color: #5a6366;
+  margin: 0 10px;
+}
+
+.forget__title {
+  font-size: 20px;
+  text-align: center;
+}
+
+.forget__text {
+  padding-top: 20px;
+  line-height: 140%;
+}
+
+.form-send::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(10, 9, 12, 0.6) url("../images/tenor.gif") center/50px no-repeat;
+  opacity: 0;
+  visibility: hidden;
+  -webkit-transition: 0.5s;
+  transition: 0.5s;
+  z-index: 100;
+}
+
+.form-send._sending::after {
+  opacity: 1;
+  visibility: visible;
+}
+
 .sub-menu {
   max-height: 120px;
+  background-color: #ffffff;
 }
 
 @media (min-width: 600px) {
@@ -1713,6 +1750,10 @@ body._lock {
   }
 }
 
+.teams {
+  background-color: #ffffff;
+}
+
 .teams__inner {
   padding: calc(15px + 15 * ((100vw - 280px) / (1420 - 280))) 0;
 }
@@ -1847,13 +1888,29 @@ body._lock {
 }
 
 .groups {
-  background: url("../images/bggroup.jpg") center no-repeat fixed;
   position: relative;
 }
 
-@media (max-width: 1000px) {
-  .groups {
-    background-attachment: scroll;
+.groups::before {
+  content: "";
+  background: url("../images/bggroup.jpg") center no-repeat;
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  z-index: -2;
+}
+
+@media (min-width: 1000px) {
+  .groups::before {
+    background: url("../images/bggroup.jpg") center no-repeat;
+    position: fixed;
+    content: "";
+    left: 0;
+    top: 0;
+    will-change: transform;
+    height: 100%;
+    width: 100%;
+    z-index: -2;
   }
 }
 
@@ -2070,6 +2127,7 @@ th.table__main {
 
 .cities {
   position: relative;
+  background-color: #ffffff;
 }
 
 @media (min-width: 706px) {
@@ -2350,8 +2408,127 @@ th.table__main {
   left: 41%;
 }
 
+@-webkit-keyframes waves {
+  0% {
+    -webkit-transform: scale(0);
+            transform: scale(0);
+    opacity: 0.9;
+  }
+  100% {
+    opacity: 0;
+    -webkit-transform: scale(1);
+            transform: scale(1);
+  }
+}
+
+@keyframes waves {
+  0% {
+    -webkit-transform: scale(0);
+            transform: scale(0);
+    opacity: 0.9;
+  }
+  100% {
+    opacity: 0;
+    -webkit-transform: scale(1);
+            transform: scale(1);
+  }
+}
+
+.city-point {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  background-color: #f7a62a;
+  opacity: 0;
+}
+
+.point {
+  position: absolute;
+  width: 60px;
+  height: 60px;
+}
+
+.glasgow {
+  top: 33%;
+  left: 40%;
+}
+
+.amsterdam {
+  top: 41.5%;
+  left: 48%;
+}
+
+.kopenhagen {
+  top: 39.5%;
+  left: 51%;
+}
+
+.london {
+  top: 40%;
+  left: 40%;
+}
+
+.sevilla {
+  top: 53%;
+  left: 29%;
+}
+
+.muenchen {
+  top: 41.5%;
+  left: 48%;
+}
+
+.rom {
+  top: 41.5%;
+  left: 48%;
+}
+
+.budapest {
+  top: 41.5%;
+  left: 48%;
+}
+
+.bukarest {
+  top: 41.5%;
+  left: 48%;
+}
+
+.baku {
+  top: 41.5%;
+  left: 48%;
+}
+
+.petersburg {
+  top: 41.5%;
+  left: 48%;
+}
+
+._show-point .city-point {
+  -webkit-animation: waves 1.5s cubic-bezier(0.9, 0.24, 0.62, 0.79) infinite;
+          animation: waves 1.5s cubic-bezier(0.9, 0.24, 0.62, 0.79) infinite;
+}
+
+._show-point .city-point:nth-of-type(1) {
+  -webkit-animation-delay: 0;
+          animation-delay: 0;
+}
+
+._show-point .city-point:nth-of-type(2) {
+  -webkit-animation-delay: 0.3s;
+          animation-delay: 0.3s;
+}
+
+._show-point .city-point:nth-of-type(3) {
+  -webkit-animation-delay: 0.5s;
+          animation-delay: 0.5s;
+}
+
 .videos {
   position: relative;
+  background-color: #ffffff;
 }
 
 .videos::after {
@@ -2504,6 +2681,10 @@ th.table__main {
   .videos__navigation {
     width: 110px;
   }
+}
+
+._aslid {
+  display: none;
 }
 
 ._active-link::after {

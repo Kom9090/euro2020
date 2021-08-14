@@ -1,5 +1,6 @@
 .videos {
     position: relative;
+    background-color: #ffffff;
     &::after {
         content: "";
         position: absolute;
@@ -117,4 +118,7 @@
     .videos__navigation {
         width: 110px;
     }
+}
+._aslid {
+    display: none;
 }

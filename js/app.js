@@ -302,6 +302,145 @@ new Swiper(".column__swiper", {
         onlyInViewport: true,
         pageUpDown: true,
     },
+    virtual: {
+        slides: (function () {
+            const slides = [`<div class="swiper-slide">
+                                            <a href="#" class="column__link">
+                                                <div class="column__block-img">
+                                                    <picture>
+                                                        <source srcset="./images/belg.webp" type="image/webp">
+                                                        <img src="./images/belg.jpg" alt="belg" class="column__img">
+                                                    </picture>
+                                                </div>
+                                                <div class="column__text">
+                                                    <span class="column__time">12.06, 10:00</span>
+                                                    <span class="column__name">Бельгия на ЕВРО: сможет ли де-Брюйне
+                                                        восстановиться к стартовому матчу?</span>
+                                                </div>
+                                            </a>
+                                            <a href="#" class="column__link">
+                                                <div class="column__block-img">
+                                                    <picture>
+                                                        <source srcset="./images/avnew.webp" type="image/webp">
+                                                        <img src="./images/avnew.jpeg" alt="belg" class="column__img">
+                                                    </picture>
+                                                </div>
+                                                <div class="column__text">
+                                                    <span class="column__time">12.06, 10:00</span>
+                                                    <span class="column__name">Бельгия на ЕВРО: сможет ли де-Брюйне
+                                                        восстановиться к стартовому матчу?</span>
+                                                </div>
+                                            </a>
+                                            <a href="#" class="column__link">
+                                                <div class="column__block-img">
+                                                    <picture>
+                                                        <source srcset="./images/fra.webp" type="image/webp">
+                                                        <img src="./images/fra.jpg" alt="belg" class="column__img">
+                                                    </picture>
+                                                </div>
+                                                <div class="column__text">
+                                                    <span class="column__time">12.06, 10:00</span>
+                                                    <span class="column__name">Бельгия на ЕВРО: сможет ли де-Брюйне
+                                                        восстановиться к стартовому матчу?</span>
+                                                </div>
+                                            </a>
+                                            <a href="#" class="column__link">
+                                                <div class="column__block-img">
+                                                    <picture>
+                                                        <source srcset="./images/eng.webp" type="image/webp">
+                                                        <img src="./images/eng.jpg" alt="belg" class="column__img">
+                                                    </picture>
+                                                </div>
+                                                <div class="column__text">
+                                                    <span class="column__time">12.06, 10:00</span>
+                                                    <span class="column__name">Бельгия на ЕВРО: сможет ли де-Брюйне
+                                                        восстановиться к стартовому матчу?</span>
+                                                </div>
+                                            </a>
+                                            <a href="#" class="column__link">
+                                                <div class="column__block-img">
+                                                    <picture>
+                                                        <source srcset="./images/belg.webp" type="image/webp">
+                                                        <img src="./images/belg.jpg" alt="belg" class="column__img">
+                                                    </picture>
+                                                </div>
+                                                <div class="column__text">
+                                                    <span class="column__time">12.06, 10:00</span>
+                                                    <span class="column__name">Бельгия на ЕВРО: сможет ли де-Брюйне
+                                                        восстановиться к стартовому матчу?</span>
+                                                </div>
+                                            </a>
+                                        </div>`];
+
+            let src = "./images/belg.jpg";
+            let ds = "Обзор группы В, статистика и составы команд";
+            for (var i = 0; i < 600; i += 1) {
+                slides.push(`<div class="swiper-slide">
+                                            <a href="#" class="column__link">
+                                                <div class="column__block-img">
+                                                    <picture>
+                                                        <source srcset=${src} type="image/webp">
+                                                        <img src=${src} alt="belg" class="column__img">
+                                                    </picture>
+                                                </div>
+                                                <div class="column__text">
+                                                    <span class="column__time">${i}1.06.2021</span>
+                                                    <span class="column__name">${ds}</span>
+                                                </div>
+                                            </a>
+                                            <a href="#" class="column__link">
+                                                <div class="column__block-img">
+                                                    <picture>
+                                                        <source srcset=${src} type="image/webp">
+                                                        <img src=${src} alt="belg" class="column__img">
+                                                    </picture>
+                                                </div>
+                                                <div class="column__text">
+                                                    <span class="column__time">${i}1.06.2021</span>
+                                                    <span class="column__name">${ds}</span>
+                                                </div>
+                                            </a>
+                                            <a href="#" class="column__link">
+                                                <div class="column__block-img">
+                                                    <picture>
+                                                        <source srcset=${src} type="image/webp">
+                                                        <img src=${src} alt="belg" class="column__img">
+                                                    </picture>
+                                                </div>
+                                                <div class="column__text">
+                                                    <span class="column__time">${i}1.06.2021</span>
+                                                    <span class="column__name">${ds}</span>
+                                                </div>
+                                            </a>
+                                            <a href="#" class="column__link">
+                                                <div class="column__block-img">
+                                                    <picture>
+                                                        <source srcset=${src} type="image/webp">
+                                                        <img src=${src} alt="belg" class="column__img">
+                                                    </picture>
+                                                </div>
+                                                <div class="column__text">
+                                                    <span class="column__time">${i}1.06.2021</span>
+                                                    <span class="column__name">${ds}</span>
+                                                </div>
+                                            </a>
+                                            <a href="#" class="column__link">
+                                                <div class="column__block-img">
+                                                    <picture>
+                                                        <source srcset=${src} type="image/webp">
+                                                        <img src=${src} alt="belg" class="column__img">
+                                                    </picture>
+                                                </div>
+                                                <div class="column__text">
+                                                    <span class="column__time">${i}1.06.2021</span>
+                                                    <span class="column__name">${ds}</span>
+                                                </div>
+                                            </a>
+                                        </div>`);
+            }
+            return slides;
+        })(),
+    },
 });
 
 //spollers 
@@ -400,7 +539,7 @@ if (spollersArray.length > 0) {
                     hideSpollersBody(spollersBlock);
                 }
                 spollerTitle.classList.toggle("_close-spr");
-                _slideToggle(spollerTitle.nextElementSibling, 300);
+                _slideToggle(spollerTitle.nextElementSibling, 0);
             }
             e.preventDefault();
         }
@@ -409,12 +548,12 @@ if (spollersArray.length > 0) {
         const spollerActiveTitle = spollersBlock.querySelector("[data-spoller]._close-spr");
         if (spollerActiveTitle) {
             spollerActiveTitle.classList.remove("_close-spr");
-            _slideUp(spollerActiveTitle.nextElementSibling, 300);
+            _slideUp(spollerActiveTitle.nextElementSibling, 0);
         }
     }
 }
 
-let _slideUp = (target, duration = 300) => {
+let _slideUp = (target, duration = 0) => {
     if (!target.classList.contains("_slide")) {
         target.classList.add("_slide");
         target.style.transitionProperty = "height, margin, padding";
@@ -441,7 +580,7 @@ let _slideUp = (target, duration = 300) => {
         }, duration);
     }
 }
-let _slideDown = (target, duration = 300) => {
+let _slideDown = (target, duration = 0) => {
     if (!target.classList.contains("_slide")) {
         target.classList.add("_slide");
         if (target.hidden) {
@@ -471,7 +610,7 @@ let _slideDown = (target, duration = 300) => {
         }, duration);
     }
 }
-let _slideToggle = (target, duration = 300) => {
+let _slideToggle = (target, duration = 0) => {
     if (target.hidden) {
         return _slideDown(target, duration);
     } else {
@@ -699,7 +838,7 @@ new Swiper(".videos__swiper", {
         },
     },
     spaceBetween: 30,
-    simulateTouch: false,
+    freeMode: true,
     keyboard: {
         enabled: true,
         onlyInViewport: true,
@@ -1042,4 +1181,36 @@ async function getMatchs(index) {
     }
 }
 
+document.addEventListener("DOMContentLoaded", () => {
+    let cityLinks = document.querySelectorAll(".cities__link");
+    for (let i = 0; i < cityLinks.length; i++) {
+        cityLinks[i].addEventListener("mouseover", () => {
+            cityLinks[i].nextElementSibling.classList.add("_show-point");
+        })
+        cityLinks[i].addEventListener("mouseout", () => {
+            cityLinks[i].nextElementSibling.classList.remove("_show-point");
+        })
+    }
+});
 
+
+//forget password
+document.querySelector(".form-send").addEventListener("submit", formSend);
+async function formSend(e) {
+    e.preventDefault();
+    document.querySelector(".form-send").classList.add("_sending");
+    let response = await fetch("serv/server.php", {
+        method: "POST",
+        body: data
+    });
+    if (response.ok) {
+        let success = document.querySelector(".forget__text");
+        success.innerHTML = `<p>Ссылка для восстановления пароля отправлена на ваш электронный адрес. Если сообщение не придет на протеженнии 10 минут, отправить повторно?</p>`;
+        document.querySelector(".form-send").reset();
+        document.querySelector(".form-send").classList.remove("_sending");
+    }
+    else {
+        alert("Ошибка");
+        document.querySelector(".form-send").classList.remove("_sending");
+    }
+}

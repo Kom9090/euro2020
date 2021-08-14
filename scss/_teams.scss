@@ -1,4 +1,5 @@
 .teams {
+    background-color: #ffffff;
     &__inner {
         padding: calc(15px + 15 * ((100vw - 280px) / (1420 - 280))) 0;
         &._init ._icon-next::before {
