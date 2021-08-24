@@ -7,12 +7,29 @@ $clg: #b4c1c5;
 $cvp: #480049;
 $cvt: #7f3269;
 $csl: #c7d64f;
-
+$minWidth: 280;
+$maxWidth: 1920;
+$container: 1440;
 //mixins
-//@mixin sizes($selector, $start, $increase, $maxw) {
-//    $selector: calc($start + $increase * (100vw / $maxw));
-//}
-//calc(200px + 1100 * ((100vw - 320px) / (1440 - 320)));
+@mixin a-sizes($property, $startSize, $minSize, $type) {
+    $addSize: $startSize - $minSize;
+    $Width: $maxWidth - $minWidth;
+    @if $type==1 {
+        #{$property}: $startSize + px;
+        @media (max-width: #{$container + px}) {
+            #{$property}: calc(#{$minSize + px} + #{$addSize} * ((100vw - #{$minWidth + px}) / #{$Width}));
+        }
+    }
+    @else if $type==2 {
+        #{$property}: $startSize + px;
+        @media (min-width: #{$container + px}) {
+            #{$property}: calc(#{$minSize + px} + #{$addSize} * ((100vw - #{$minWidth + px}) / #{$Width}));
+        }
+    }
+    @else {
+            #{$property}: calc(#{$minSize + px} + #{$addSize} * ((100vw - #{$minWidth + px}) / #{$Width}));
+    }
+}
 
 //reset
 html {
